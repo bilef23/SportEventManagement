@@ -1,4 +1,5 @@
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Repository.deps.json
+/Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Repository.runtimeconfig.json
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Repository.dll
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Repository.pdb
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Domain.dll
@@ -8,10 +9,10 @@
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.AssemblyInfoInputs.cache
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.AssemblyInfo.cs
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.csproj.CoreCompileInputs.cache
+/Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.sourcelink.json
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.csproj.Up2Date
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.dll
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/refint/Repository.dll
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.pdb
-/Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/ref/Repository.dll
-/Users/biledimitrova/RiderProjects/SportEvents/Repository/bin/Debug/net8.0/Repository.runtimeconfig.json
 /Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/Repository.genruntimeconfig.cache
+/Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/Debug/net8.0/ref/Repository.dll
