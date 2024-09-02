@@ -1,5 +1,22 @@
 # Default ignored files
 /shelf/
+.idea/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]eleases/
+[Rr]eleasesPublic/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.config
+*.csproj.user
+*.suo
+*.tmp
 /workspace.xml
 # Rider ignored files
 /.idea.SportEvents.iml
