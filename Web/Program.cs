@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Repository;
+using Repository.Implementation;
+using Repository.Interface;
 using Repository.Seed;
 using Service;
+using Service.Implementation;
+using Service.Interface;
 using Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +15,10 @@ builder.Services.AddServiceServices();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddTransient<IEventService, EventService>();
 
 var app = builder.Build();
 

@@ -36,7 +36,6 @@ public class DbSeeder : IDbSeeder
                 StartDate = DateTime.Now.AddMonths(1).ToUniversalTime(),
                 EndDate = DateTime.Now.AddMonths(1).AddHours(5).ToUniversalTime(),
                 EventType = EventType.Tournament,
-                Status = "Scheduled",
                 OrganizerId = _dbContext.Organizers.FirstOrDefault().Id
             };
 
@@ -49,7 +48,6 @@ public class DbSeeder : IDbSeeder
                 StartDate = DateTime.Now.AddMonths(2).ToUniversalTime(),
                 EndDate = DateTime.Now.AddMonths(2).AddDays(1).ToUniversalTime(),
                 EventType = EventType.Tournament,
-                Status = "Scheduled",
                 OrganizerId = _dbContext.Organizers.FirstOrDefault().Id
             };
             await _dbContext.Events.AddAsync(event1);
