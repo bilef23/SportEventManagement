@@ -10,8 +10,7 @@ public class Event : BaseEntity
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public EventType EventType { get; set; }
-    public string Status { get; set; }
     public Guid OrganizerId { get; set; }
-    public Organizer Organizer { get; set; }
-    public ICollection<Registration> Registrations { get; set; }
+    public Organizer? Organizer { get; set; }
+    public ICollection<Registration>? Registrations { get; set; }
 }

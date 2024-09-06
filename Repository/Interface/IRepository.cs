@@ -1,14 +1,15 @@
-﻿using SportEvents.Domain;
+﻿using System.Linq.Expressions;
+using SportEvents.Domain;
 
 namespace Repository.Interface;
 
 public interface IRepository<T> where T : BaseEntity
     {
-        IEnumerable<T> GetAll();
-        T Get(Guid? id);
-        T Insert(T entity);
-        List<T> InsertMany(List<T> entities);
-        T Update(T entity);
-        T Delete(T entity);
+        Task<List<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
+        Task<T> Get(Guid? id,params Expression<Func<T, object>>[] includeProperties);
+        Task<T> Insert(T entity);
+        Task<List<T>> InsertMany(List<T> entities);
+        Task<T> Update(T entity);
+        Task<T> Delete(T entity);
     }
 

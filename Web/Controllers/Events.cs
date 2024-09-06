@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Repository;
+using Microsoft.DotNet.MSIdentity.Shared;
 using Service.Interface;
 using SportEvents.Domain;
 
@@ -13,26 +10,21 @@ namespace Web.Controllers
 {
     public class Events : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IEventService _eventService;
-
-        public Events(ApplicationDbContext context, IEventService eventService)
+        private readonly IOrganizerService _organizerService;
+        public Events(IEventService eventService, IOrganizerService organizerService)
         {
-            _context = context;
             _eventService = eventService;
+            _organizerService = organizerService;
         }
 
         // GET: Event_
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_eventService.GetEvents());
+            var events = await _eventService.GetEvents();
+            return View(events);
         }
-        // public async Task<IActionResult> Index()
-        // {
-        //     var applicationDbContext = _context.Events.Include(e => e.Organizer);
-        //     return View(await applicationDbContext.ToListAsync());
-        // }
-
+   
         // GET: Event_/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -41,21 +33,16 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
-                .Include(e => e.Organizer)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@event == null)
-            {
-                return NotFound();
-            }
+            var @event = await _eventService.GetEventById(id);
 
             return View(@event);
         }
 
         // GET: Event_/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["OrganizerId"] = new SelectList(_context.Organizers, "Id", "Address");
+            var organizers = await _organizerService.GetOrganizers();
+            ViewData["OrganizerId"] = new SelectList(organizers, "Id", "Name");
             return View();
         }
 
@@ -64,16 +51,16 @@ namespace Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,Location,StartDate,EndDate,EventType,Status,OrganizerId,Id")] Event @event)
+        public async Task<IActionResult> Create([Bind("Name,Description,Location,StartDate,EndDate,EventType,OrganizerId")] Event @event)
         {
             if (ModelState.IsValid)
             {
                 @event.Id = Guid.NewGuid();
-                _context.Add(@event);
-                await _context.SaveChangesAsync();
+                await _eventService.CreateNewEvent(@event);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrganizerId"] = new SelectList(_context.Organizers, "Id", "Address", @event.OrganizerId);
+            var organizers = await _organizerService.GetOrganizers();
+            ViewData["OrganizerId"] = new SelectList(organizers, "Id", "Name", @event.OrganizerId);
             return View(@event);
         }
 
@@ -85,12 +72,10 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events.FindAsync(id);
-            if (@event == null)
-            {
-                return NotFound();
-            }
-            ViewData["OrganizerId"] = new SelectList(_context.Organizers, "Id", "Address", @event.OrganizerId);
+            var @event = await _eventService.GetEventById(id);
+            
+            var organizers = await _organizerService.GetOrganizers();
+            ViewData["OrganizerId"] = new SelectList(organizers, "Id", "Name", @event.OrganizerId);
             return View(@event);
         }
 
@@ -108,26 +93,18 @@ namespace Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(@event);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EventExists(@event.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                Console.WriteLine("OK");
+                await _eventService.UpdateEvent(@event);
+                
+                var organizers = await _organizerService.GetOrganizers();
+                ViewData["OrganizerId"] = new SelectList(organizers, "Id", "Name", @event.OrganizerId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrganizerId"] = new SelectList(_context.Organizers, "Id", "Address", @event.OrganizerId);
+
+            @event.StartDate=@event.StartDate.ToLocalTime();
+            @event.EndDate=@event.EndDate.ToLocalTime();
             return View(@event);
+            
         }
 
         // GET: Event_/Delete/5
@@ -138,15 +115,9 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
-                .Include(e => e.Organizer)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            return View(@event);
+            var result = await _eventService.DeleteEvent(id);
+            
+            return View(result);
         }
 
         // POST: Event_/Delete/5
@@ -154,19 +125,10 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var @event = await _context.Events.FindAsync(id);
-            if (@event != null)
-            {
-                _context.Events.Remove(@event);
-            }
-
-            await _context.SaveChangesAsync();
+            _eventService.GetEventById(id);
+            
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EventExists(Guid id)
-        {
-            return _context.Events.Any(e => e.Id == id);
-        }
     }
 }
