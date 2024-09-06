@@ -1,26 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj": {}
+    "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Web\\Web.csproj": {}
   },
   "projects": {
-    "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj": {
+    "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj",
-        "packagesPath": "/Users/biledimitrova/.nuget/packages/",
-        "outputPath": "/Users/biledimitrova/RiderProjects/SportEvents/Domain/obj/",
+        "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/biledimitrova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -33,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -60,35 +66,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj": {
+    "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj",
-        "packagesPath": "/Users/biledimitrova/.nuget/packages/",
-        "outputPath": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/obj/",
+        "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/biledimitrova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj": {
-                "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj"
+              "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj"
               }
             }
           }
@@ -97,6 +104,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -138,39 +150,52 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj": {
+    "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj",
-        "packagesPath": "/Users/biledimitrova/.nuget/packages/",
-        "outputPath": "/Users/biledimitrova/RiderProjects/SportEvents/Service/obj/",
+        "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/biledimitrova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -198,38 +223,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj": {
+    "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj",
-        "packagesPath": "/Users/biledimitrova/.nuget/packages/",
-        "outputPath": "/Users/biledimitrova/RiderProjects/SportEvents/Web/obj/",
+        "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Web\\Web.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/biledimitrova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj": {
-                "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj"
+              "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Repository\\Repository.csproj"
               },
-              "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj": {
-                "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj"
+              "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\Dell\\RiderProjects\\SportEventManagement\\Service\\Service.csproj"
               }
             }
           }
@@ -238,6 +264,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -256,11 +287,29 @@
               "target": "Package",
               "version": "[8.0.4, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.11.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.4, )"
             }
@@ -284,7 +333,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
