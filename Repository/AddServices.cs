@@ -19,5 +19,6 @@ public static class AddServices
         });
         services.AddScoped<IDbSeeder, DbSeeder>();
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
     }
 }

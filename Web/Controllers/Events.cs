@@ -1,8 +1,5 @@
-using System;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.DotNet.MSIdentity.Shared;
 using Service.Interface;
 using SportEvents.Domain;
 

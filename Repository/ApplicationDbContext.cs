@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Domain.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SportEvents.Domain;
 
 namespace Repository;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : IdentityDbContext<SportEventsAppUser>
 {
     public DbSet<Event> Events { get; set; }
     public DbSet<Organizer> Organizers { get; set; }

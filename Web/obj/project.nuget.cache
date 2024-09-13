@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zm9WQO+k6fJrZFJkieKqxWBTWydrfo78Q/vm++r2UUxqISxCPhoBIALz/lJtOIPxNnjlAwtr/3I5vSYqZKT1xg==",
+  "dgSpecHash": "B3IZZeCHn1VFXaujdklFcEjI3f83lDLlUhpIC41faGkD2XWRW+QUMZKmodRfrx+oik3x/zUXoKY/Muz+mFJaLQ==",
   "success": true,
   "projectFilePath": "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj",
   "expectedPackageFiles": [
@@ -146,6 +146,7 @@
     "/Users/biledimitrova/.nuget/packages/sqlitepclraw.core/2.1.6/sqlitepclraw.core.2.1.6.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.6/sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.6/sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "/Users/biledimitrova/.nuget/packages/stripe.net/45.10.0/stripe.net.45.10.0.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/system.codedom/5.0.0/system.codedom.5.0.0.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/system.collections.immutable/7.0.0/system.collections.immutable.7.0.0.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/system.composition/7.0.0/system.composition.7.0.0.nupkg.sha512",

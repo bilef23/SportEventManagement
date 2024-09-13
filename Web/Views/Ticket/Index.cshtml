@@ -1,66 +1,31 @@
-@model IEnumerable<SportEvents.Domain.Ticket>
+@using Domain.Options
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model SportEvents.Domain.Ticket
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Buy Ticket</h1>
+<div class="ticket-details">
+    <h3>@Model.Event.Name</h3>
+    <p><strong>Date:</strong> @Model.Event.StartDate.ToString("MMMM dd, yyyy")</p>
+    <p><strong>Location:</strong> @Model.Event.Location</p>
+    <p id="EventPrice"><strong>Price:</strong> @Model.Event.EventPrice</p>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeatNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PurchaseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BuyerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BuyerEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeatNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuyerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuyerEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Event.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<form asp-action="AddToShoppingCart" asp-controller="Ticket" method="post">
+    <input type="hidden" asp-for="EventId" />
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="form-group">
+        <label asp-for="Quantity" class="control-label">Quantity</label>
+        <input asp-for="Quantity" class="form-control" type="number" min="1" value="1" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+    <div>Total price: <strong id=""></strong></div>
+
+    <button type="submit" class="btn btn-primary">Add to shopping cart</button>
+</form>

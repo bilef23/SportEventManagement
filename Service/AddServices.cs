@@ -15,5 +15,6 @@ public static class AddServices
         services.AddScoped<IRegistrationService, RegistrationService>();
         services.AddScoped<ITeamService, TeamService>();
         services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<IShoppingCartService, ShoppingCartService>();
     }
 }

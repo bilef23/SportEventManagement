@@ -34,6 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Organizer)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventPrice)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -62,9 +65,13 @@
                 @Html.DisplayFor(modelItem => item.Organizer.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.EventPrice)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="BuyTicket" asp-controller="Ticket" asp-route-id="@item.Id">Buy a ticket</a>
             </td>
         </tr>
 }
