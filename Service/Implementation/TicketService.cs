@@ -31,6 +31,7 @@ public class TicketService : ITicketService
 
     public async Task<Ticket> CreateNewTicket(Ticket ticket)
     {
+        ticket.PurchaseDate=DateTime.UtcNow;
         var result = await _ticketRepository.Insert(ticket);
         if (result is null)
         {

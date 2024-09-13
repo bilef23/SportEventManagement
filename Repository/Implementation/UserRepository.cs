@@ -22,6 +22,9 @@ public class UserRepository : IUserRepository
     public SportEventsAppUser Get(string id)
     {
         return _entities
+            .Include(z=>z.Orders)
+            .Include("Orders.TicketsInOrder")
+            .Include("Orders.TicketsInOrder.Event")
             .Include(z => z.ShoppingCart)
             .Include("ShoppingCart.Tickets")
             .Include("ShoppingCart.Tickets.Event")
