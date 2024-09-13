@@ -1,0 +1,33 @@
+@using Domain.Options
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Domain.DTO.ShoppingCartDTO
+
+@{
+    ViewData["Title"] = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Buy Ticket</h1>
+@*
+<div class="ticket-details">
+    <h3>@Model.Event.Name</h3>
+    <p><strong>Date:</strong> @Model.Event.StartDate.ToString("MMMM dd, yyyy")</p>
+    <p><strong>Location:</strong> @Model.Event.Location</p>
+    <p id="EventPrice"><strong>Price:</strong> @Model.Event.EventPrice</p>
+</div>
+
+<form asp-action="AddToShoppingCart" asp-controller="Ticket" method="post">
+    <input type="hidden" asp-for="EventId" />
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="form-group">
+        <label asp-for="Quantity" class="control-label">Quantity</label>
+        <input asp-for="Quantity" class="form-control" type="number" min="1" value="1" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+    <div>Total price: <strong id=""></strong></div>
+
+    <button type="submit" class="btn btn-primary">Add to shopping cart</button>
+</form>
+*@

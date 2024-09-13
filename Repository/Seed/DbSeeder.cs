@@ -35,6 +35,11 @@ public class DbSeeder : IDbSeeder
                 Location = "Central Park",
                 StartDate = DateTime.Now.AddMonths(1).ToUniversalTime(),
                 EndDate = DateTime.Now.AddMonths(1).AddHours(5).ToUniversalTime(),
+                MaximumRegistrations = 10,
+                MaximumCapacityEvent = 100,
+                EventPrice = 1000,
+                ImageUrl = "https://media.gq-magazine.co.uk/photos/6422b386a74758f5d02d2b44/master/pass/How-to-train-for-a-marathon-hp-a.jpg",
+                OpenForRegistrations = true,
                 EventType = EventType.Tournament,
                 OrganizerId = _dbContext.Organizers.FirstOrDefault().Id
             };
@@ -48,6 +53,11 @@ public class DbSeeder : IDbSeeder
                 StartDate = DateTime.Now.AddMonths(2).ToUniversalTime(),
                 EndDate = DateTime.Now.AddMonths(2).AddDays(1).ToUniversalTime(),
                 EventType = EventType.Tournament,
+                MaximumRegistrations = 10,
+                MaximumCapacityEvent = 100,
+                EventPrice = 1000,
+                ImageUrl = "https://www.soccerwire.com/wp-content/uploads/2023/05/usys-national-league-boys-mesa.jpg",
+                OpenForRegistrations = true,
                 OrganizerId = _dbContext.Organizers.FirstOrDefault().Id
             };
             await _dbContext.Events.AddAsync(event1);
@@ -174,23 +184,19 @@ public class DbSeeder : IDbSeeder
             var ticket1 = new Ticket
             {
                 Id = Guid.NewGuid(),
-                Price = 50.00m,
-                SeatNumber = "A1",
+                Quantity = 5,
                 PurchaseDate = DateTime.Now.AddDays(-1).ToUniversalTime(),
-                BuyerName = "Emily",
-                BuyerEmail = "emily@example.com",
-                EventId = _dbContext.Events.FirstOrDefault().Id
+                EventId = _dbContext.Events.FirstOrDefault().Id,
+                UserId = _dbContext.Users.FirstOrDefault().Id
             };
 
             var ticket2 = new Ticket
             {
                 Id = Guid.NewGuid(),
-                Price = 30.00m,
-                SeatNumber = "B2",
+                Quantity = 10,
                 PurchaseDate = DateTime.Now.ToUniversalTime(),
-                BuyerName = "James",
-                BuyerEmail = "james@example.com",
-                EventId = _dbContext.Events.FirstOrDefault().Id
+                EventId = _dbContext.Events.FirstOrDefault().Id,
+                UserId = _dbContext.Users.FirstOrDefault().Id,
             };
             await _dbContext.Tickets.AddAsync(ticket1);
             await _dbContext.Tickets.AddAsync(ticket2);

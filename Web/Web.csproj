@@ -20,6 +20,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+        <PackageReference Include="Stripe.net" Version="45.10.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,30 +31,25 @@
     <ItemGroup>
       <Compile Remove="Controllers\Participant.cs" />
       <Compile Remove="Controllers\EventController.cs" />
-      <Compile Remove="Controllers\TicketController.cs" />
       <Compile Remove="Views\Event_\**" />
       <Compile Remove="Controllers\EventsController.cs" />
       <Compile Remove="Views\Event\**" />
       <Compile Remove="Controllers\Ticket.cs" />
-      <Compile Remove="Views\Ticket\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Views\Event_\**" />
       <EmbeddedResource Remove="Views\Event\**" />
-      <EmbeddedResource Remove="Views\Ticket\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Views\Event_\**" />
       <Content Remove="Views\Event\**" />
-      <Content Remove="Views\Ticket\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Views\Event_\**" />
       <None Remove="Views\Event\**" />
-      <None Remove="Views\Ticket\**" />
     </ItemGroup>
 
     <ItemGroup>

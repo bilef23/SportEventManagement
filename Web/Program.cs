@@ -1,18 +1,19 @@
+using Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Repository;
 using Repository.Implementation;
 using Repository.Interface;
 using Repository.Seed;
 using Service;
-using Service.Implementation;
 using Service.Interface;
 using Web;
+using EventService = Service.Implementation.EventService;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure(builder.Configuration);
 builder.Services.AddRepositoryServices();
 builder.Services.AddServiceServices();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<SportEventsAppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
