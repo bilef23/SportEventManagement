@@ -49,7 +49,7 @@ public class ShoppingCartService : IShoppingCartService
         return dto;
     }
 
-    public bool Order(string? userId)
+    public async Task<bool> Order(string? userId)
     {
         if (userId != null)
             {
@@ -64,12 +64,15 @@ public class ShoppingCartService : IShoppingCartService
                 {
                     Id = Guid.NewGuid(),
                     UserId = userId,
-                    Owner = loggedInUser,
                     TicketsInOrder = userShoppingCart.Tickets
                 };
-
-                _orderRepository.Insert(order);
-
+                var result =await _orderRepository.Insert(order);
+                
+                loggedInUser.Orders.Add(order);
+                _userRepository.Update(loggedInUser);
+                
+                 
+                
                 //List<ProductInOrder> productInOrder = new List<ProductInOrder>();
 
                 

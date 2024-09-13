@@ -744,3 +744,7 @@ C:/Users/Dell/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/testhost.e
 /Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/Stripe.net.dll
+/Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/EPPlus.dll
+/Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/EPPlus.Interfaces.dll
+/Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/EPPlus.System.Drawing.dll
+/Users/biledimitrova/RiderProjects/SportEvents/Web/bin/Debug/net8.0/Microsoft.IO.RecyclableMemoryStream.dll

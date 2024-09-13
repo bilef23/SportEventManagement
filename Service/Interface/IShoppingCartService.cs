@@ -7,5 +7,5 @@ public interface IShoppingCartService
 {
     Task<ShoppingCart> AddTicketToCartAsync(Ticket ticket);
     ShoppingCartDTO getShoppingCartInfo(string userId);
-    bool Order(string? userId);
+    Task<bool> Order(string? userId);
 }
