@@ -7,15 +7,17 @@ namespace Service.Implementation;
 public class RegistrationService : IRegistrationService
 {
     private readonly IRepository<Registration> _registrationRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public RegistrationService(IRepository<Registration> registrationRepository)
+    public RegistrationService(IRepository<Registration> registrationRepository, IUnitOfWork unitOfWork)
     {
         _registrationRepository = registrationRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<List<Registration>> GetRegistrations()
     {
-        return await _registrationRepository.GetAll();
+        return await _registrationRepository.GetAll(e=>e.Event,e=>e.Participant);
     }
 
     public async Task<Registration> GetRegistrationById(Guid? id)
@@ -31,24 +33,28 @@ public class RegistrationService : IRegistrationService
 
     public async Task<Registration> CreateNewRegistration(Registration registration)
     {
-        var result = await _registrationRepository.Insert(registration);
-        if (result is null)
+        await _registrationRepository.Insert(registration);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return registration;
     }
 
     public async Task<Registration> UpdateRegistration(Registration registration)
     {
-        var result = await _registrationRepository.Update(registration);
-        if (result is null)
+        await _registrationRepository.Update(registration);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return registration;
         
     }
 
@@ -56,12 +62,13 @@ public class RegistrationService : IRegistrationService
     {
         var registration =await  GetRegistrationById(id);
         
-        var result = await _registrationRepository.Delete(registration);
-        if (result is null)
+        await _registrationRepository.Delete(registration);
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return registration;
     }
 }

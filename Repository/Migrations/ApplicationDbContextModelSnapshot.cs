@@ -384,11 +384,17 @@ namespace Repository.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
 
                     b.HasIndex("ParticipantId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Registrations");
                 });
@@ -598,9 +604,17 @@ namespace Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Domain.Identity.SportEventsAppUser", "User")
+                        .WithMany("Registrations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Event");
 
                     b.Navigation("Participant");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.ShoppingCart", b =>
@@ -661,6 +675,8 @@ namespace Repository.Migrations
             modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>
                 {
                     b.Navigation("Orders");
+
+                    b.Navigation("Registrations");
 
                     b.Navigation("ShoppingCart");
                 });

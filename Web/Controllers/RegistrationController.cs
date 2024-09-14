@@ -1,25 +1,38 @@
+using System.Security.Claims;
+using Domain.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Service.Interface;
 using SportEvents.Domain;
+using SportEvents.Enum;
 
 namespace Web.Controllers
 {
     public class RegistrationController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IParticipantService _participantService;
+        private readonly IRegistrationService _registrationService;
 
-        public RegistrationController(ApplicationDbContext context)
+        public RegistrationController(ApplicationDbContext context, IParticipantService participantService, IRegistrationService registrationService)
         {
             _context = context;
+            _participantService = participantService;
+            _registrationService = registrationService;
         }
 
         // GET: Registration
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Registrations.Include(r => r.Event).Include(r => r.Participant);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var registrations = await _registrationService.GetRegistrations();
+            
+            var userRegistrations=registrations.Where(z => z.UserId.Equals(userId)).ToList();
+            return View(userRegistrations);
         }
 
         // GET: Registration/Details/5
@@ -43,11 +56,13 @@ namespace Web.Controllers
         }
 
         // GET: Registration/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid eventId)
         {
-            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description");
-            ViewData["ParticipantId"] = new SelectList(_context.Participants, "Id", "Email");
-            return View();
+            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description",eventId);
+            ParticipantRegistrationViewModel model = new ParticipantRegistrationViewModel();
+            model.EventId = eventId;
+            ViewBag.GenderList = new SelectList(Enum.GetValues(typeof(Gender)));
+            return View(model);
         }
 
         // POST: Registration/Create
@@ -55,18 +70,37 @@ namespace Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegistrationDate,Status,EventId,ParticipantId,Id")] Registration registration)
+        public async Task<IActionResult> Create(ParticipantRegistrationViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                registration.Id = Guid.NewGuid();
-                _context.Add(registration);
-                await _context.SaveChangesAsync();
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                
+                Participant participant = new Participant()
+                {
+                    Id = Guid.NewGuid(),
+                    Email = viewModel.Participant.Email,
+                    DateOfBirth = viewModel.Participant.DateOfBirth.ToUniversalTime(),
+                    Gender = viewModel.Participant.Gender,
+                    FirstName = viewModel.Participant.FirstName,
+                    PhoneNumber = viewModel.Participant.PhoneNumber,
+                    LastName = viewModel.Participant.LastName
+                };
+                await _participantService.CreateNewParticipant(participant);
+                Registration registration = new Registration()
+                {
+                    RegistrationDate = DateTime.UtcNow.ToUniversalTime(),
+                    EventId = viewModel.EventId,
+                    ParticipantId = participant.Id,
+                    Status = RegistrationStatus.Pending,
+                    UserId = userId
+                };
+                await _registrationService.CreateNewRegistration(registration);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description", registration.EventId);
-            ViewData["ParticipantId"] = new SelectList(_context.Participants, "Id", "Email", registration.ParticipantId);
-            return View(registration);
+            ViewBag.GenderList = new SelectList(Enum.GetValues(typeof(Gender)));
+            ParticipantRegistrationViewModel model = new ParticipantRegistrationViewModel();
+            return View(model);
         }
 
         // GET: Registration/Edit/5

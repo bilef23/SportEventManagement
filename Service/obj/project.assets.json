@@ -2608,11 +2608,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj",
+      "projectUniqueName": "/Users/biledimitrova/RiderProjects/SportEventManagement/Service/Service.csproj",
       "projectName": "Service",
-      "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Service/Service.csproj",
+      "projectPath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Service/Service.csproj",
       "packagesPath": "/Users/biledimitrova/.nuget/packages/",
-      "outputPath": "/Users/biledimitrova/RiderProjects/SportEvents/Service/obj/",
+      "outputPath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Service/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/biledimitrova/.nuget/NuGet/NuGet.Config"
@@ -2628,11 +2628,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj": {
-              "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Domain/Domain.csproj"
+            "/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/Domain.csproj": {
+              "projectPath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/Domain.csproj"
             },
-            "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj": {
-              "projectPath": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj"
+            "/Users/biledimitrova/RiderProjects/SportEventManagement/Repository/Repository.csproj": {
+              "projectPath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Repository/Repository.csproj"
             }
           }
         }

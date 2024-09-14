@@ -17,8 +17,8 @@ public class DbSeeder : IDbSeeder
         await SeedOrganizerData();
         await SeedEventData();
         await SeedTeamData();
-        await SeedParticipantData();
-        await SeedRegistrationData();
+        //await SeedParticipantData();
+        //await SeedRegistrationData();
         await SeedTicketData();
        
     }
@@ -123,7 +123,7 @@ public class DbSeeder : IDbSeeder
             await _dbContext.SaveChangesAsync();
         }
     }
-    private async Task SeedRegistrationData()
+    /*private async Task SeedRegistrationData()
     {
         if (!_dbContext.Registrations.Any())
         {
@@ -148,7 +148,7 @@ public class DbSeeder : IDbSeeder
             await _dbContext.Registrations.AddAsync(registration2);
             await _dbContext.SaveChangesAsync();
         }
-    }
+    }*/
     private async Task SeedTeamData()
     {
         if (!_dbContext.Teams.Any())
