@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O/UsKr6oIMmCjP/5oLGkOmXwm8lXFOwGe38alQISKScluMbyH3ZFVeiamrEQM81i5Gtkj5W+IilNh/kgoqSE5Q==",
+  "dgSpecHash": "qvQAYDcuK4R1PLkVvARW0bxVao5tCYG/P6kifqe6waulF9QyFM8NVgGM1ZA0H0wtF3HWlJ9xzoJEVAzS1K/L5A==",
   "success": true,
-  "projectFilePath": "/Users/biledimitrova/RiderProjects/SportEvents/Web/Web.csproj",
+  "projectFilePath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Web.csproj",
   "expectedPackageFiles": [
     "/Users/biledimitrova/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

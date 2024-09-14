@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qI0wwaxuxzbZIOK/zhPHziV9cWJC7pH1n/ptHdZF2JGtdiaZcQ0mle9MVexxDxl/EmPIhno8/COfJUpjXCo54w==",
+  "dgSpecHash": "GB/gwMGTRtYdCWaOtnlvtAGSCI2a4U/WRrbrexfMtFC5BlYnKYw9OwnOsIxKJKc9EmMP/2dNGyjiyLJ1qRlZ0Q==",
   "success": true,
-  "projectFilePath": "/Users/biledimitrova/RiderProjects/SportEvents/Repository/Repository.csproj",
+  "projectFilePath": "/Users/biledimitrova/RiderProjects/SportEventManagement/Repository/Repository.csproj",
   "expectedPackageFiles": [
     "/Users/biledimitrova/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/biledimitrova/.nuget/packages/microsoft.aspnetcore.cryptography.internal/8.0.0/microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",

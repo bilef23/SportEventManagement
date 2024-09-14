@@ -7,10 +7,12 @@ namespace Service.Implementation;
 public class ParticipantService : IParticipantService
 {
     private readonly IRepository<Participant> _participantRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public ParticipantService(IRepository<Participant> participantRepository)
+    public ParticipantService(IRepository<Participant> participantRepository, IUnitOfWork unitOfWork)
     {
         _participantRepository = participantRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<List<Participant>> GetParticipants()
@@ -31,36 +33,42 @@ public class ParticipantService : IParticipantService
 
     public async Task<Participant> CreateNewParticipant(Participant participant)
     {
-        var result = await _participantRepository.Insert(participant);
-        if (result is null)
+        await _participantRepository.Insert(participant);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return participant;
     }
 
     public async Task<Participant> UpdateParticipant(Participant participant)
     {
-        var result = await _participantRepository.Update(participant);
-        if (result is null)
+        await _participantRepository.Update(participant);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return participant;
     }
 
     public async Task<Participant> DeleteParticipant(Guid id)
     {
         var participant =await  GetParticipantById(id);
         
-        var result = await _participantRepository.Delete(participant);
-        if (result is null)
+        await _participantRepository.Delete(participant);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return participant;
     }
 }

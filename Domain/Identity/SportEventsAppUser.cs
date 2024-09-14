@@ -11,4 +11,5 @@ public class SportEventsAppUser : IdentityUser
     public string? Address { get; set; }
     public ShoppingCart? ShoppingCart { get; set; } = new ShoppingCart();
     public ICollection<Order> Orders { get; set; }
+    public ICollection<Registration>? Registrations { get; set; }
 }

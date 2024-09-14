@@ -24,3 +24,16 @@ C:/Users/Dell/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.
 C:/Users/Dell/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/refint/Domain.dll
 C:/Users/Dell/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.pdb
 C:/Users/Dell/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/ref/Domain.dll
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/bin/Debug/net8.0/Domain.deps.json
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/bin/Debug/net8.0/Domain.dll
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/bin/Debug/net8.0/Domain.pdb
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.csproj.AssemblyReference.cache
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.sourcelink.json
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.dll
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/refint/Domain.dll
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/Domain.pdb
+/Users/biledimitrova/RiderProjects/SportEventManagement/Domain/obj/Debug/net8.0/ref/Domain.dll

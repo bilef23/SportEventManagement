@@ -7,10 +7,11 @@ namespace Service.Implementation;
 public class TeamService : ITeamService
 {
     private readonly IRepository<Team> _teamRepository;
-
-    public TeamService(IRepository<Team> teamRepository)
+    private readonly IUnitOfWork _unitOfWork;
+    public TeamService(IRepository<Team> teamRepository, IUnitOfWork unitOfWork)
     {
         _teamRepository = teamRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public Task<List<Team>> GetTeams()
@@ -31,36 +32,39 @@ public class TeamService : ITeamService
 
     public async Task<Team> CreateNewTeam(Team team)
     {
-        var result = await _teamRepository.Insert(team);
-        if (result is null)
+        await _teamRepository.Insert(team);
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return team;
     }
 
     public async Task<Team> UpdateTeam(Team team)
     {
-        var result = await _teamRepository.Update(team);
-        if (result is null)
+        await _teamRepository.Update(team);
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return team;
     }
 
     public async Task<Team> DeleteTeam(Guid id)
     {
-        var ticket =await  GetTeamById(id);
+        var team =await  GetTeamById(id);
         
-        var result = await _teamRepository.Delete(ticket);
-        if (result is null)
+        await _teamRepository.Delete(team);
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return team;
     }
 }
