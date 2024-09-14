@@ -1,3 +1,4 @@
+using Domain;
 using Domain.DTO;
 using Repository.Interface;
 using Service.Interface;
@@ -10,12 +11,20 @@ public class ShoppingCartService : IShoppingCartService
     private readonly IRepository<ShoppingCart> _shoppingCartRepository;
     private readonly IUserRepository _userRepository;
     private readonly IRepository<Order> _orderRepository;
+    private readonly ITicketService _ticketService;
+    private readonly IRepository<TicketInOrder> _ticketInOrderRepository;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IEmailService _emailService;
 
-    public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IUserRepository userRepository, IRepository<Order> orderRepository)
+    public ShoppingCartService(IRepository<ShoppingCart> shoppingCartRepository, IUserRepository userRepository, IRepository<Order> orderRepository, ITicketService ticketService, IRepository<TicketInOrder> ticketInOrderRepository, IUnitOfWork unitOfWork, IEmailService emailService)
     {
         _shoppingCartRepository = shoppingCartRepository;
         _userRepository = userRepository;
         _orderRepository = orderRepository;
+        _ticketService = ticketService;
+        _ticketInOrderRepository = ticketInOrderRepository;
+        _unitOfWork = unitOfWork;
+        _emailService = emailService;
     }
 
     public async Task<ShoppingCart> AddTicketToCartAsync(Ticket ticket)
@@ -23,11 +32,12 @@ public class ShoppingCartService : IShoppingCartService
         var loggedInUser = _userRepository.Get(ticket.UserId);
         var userShoppingCart = loggedInUser.ShoppingCart;
         
-        if (userShoppingCart.Tickets == null)
+        if (userShoppingCart?.Tickets == null)
             userShoppingCart.Tickets = new List<Ticket>(); ;
 
         userShoppingCart.Tickets.Add(ticket);
         await _shoppingCartRepository.Update(userShoppingCart);
+        await _unitOfWork.SaveChangesAsync();
         
         return userShoppingCart;
     }
@@ -52,61 +62,57 @@ public class ShoppingCartService : IShoppingCartService
     public async Task<bool> Order(string? userId)
     {
         if (userId != null)
-            {
+        {
                 var loggedInUser = _userRepository.Get(userId);
 
                 var userShoppingCart = loggedInUser.ShoppingCart;
-                //EmailMessage message = new EmailMessage();
-                //message.Subject = "Successfull order";
-                //message.MailTo = loggedInUser.Email;
-
+                EmailMessage message = new EmailMessage();
+                message.Subject = "Sport event Tickets";
+                message.MailTo = loggedInUser.Email;
+                message.Content = "Successfull order";
+                var tickets = userShoppingCart.Tickets;
                 Order order = new Order
                 {
                     Id = Guid.NewGuid(),
-                    UserId = userId,
-                    TicketsInOrder = userShoppingCart.Tickets
+                    OwnerId = userId,
                 };
-                var result =await _orderRepository.Insert(order);
-                
-                loggedInUser.Orders.Add(order);
-                _userRepository.Update(loggedInUser);
-                
+                 await _orderRepository.Insert(order);
+                 List<TicketInOrder> ticketInOrders = new List<TicketInOrder>();
+                 var list = userShoppingCart.Tickets.Select(
+                     x => new TicketInOrder()
+                     {
+                         Id = Guid.NewGuid(),
+                         TicketId = x.Id,
+                         OrderId = order.Id,
+                         Quantity = x.Quantity
+                     }
+                 ).ToList();
+                 ticketInOrders.AddRange(list);
                  
-                
-                //List<ProductInOrder> productInOrder = new List<ProductInOrder>();
+                 foreach (var ticket in ticketInOrders)
+                 {
+                     await _ticketInOrderRepository.Insert(ticket);
+                 }
 
-                
-
-
-                //StringBuilder sb = new StringBuilder();
-
-                //var totalPrice = 0.0;
-
-                //sb.AppendLine("Your order is completed. The order conatins: ");
-
-                /*for (int i = 1; i <= lista.Count(); i++)
+                 List<MemoryStream> attachments = new List<MemoryStream>();
+                foreach (var ticket in tickets)
                 {
-                    var currentItem = lista[i - 1];
-                    totalPrice += currentItem.Quantity * currentItem.Product.Price;
-                    sb.AppendLine(i.ToString() + ". " + currentItem.Product.ProductName + " with quantity of: " + currentItem.Quantity + " and price of: $" + currentItem.Product.Price);
-                }*/
-
-                /*sb.AppendLine("Total price for your order: " + totalPrice.ToString());
-                message.Content = sb.ToString();
-
-                productInOrder.AddRange(lista);
-
-                foreach (var product in productInOrder)
-                {
-                    _productInOrderRepository.Insert(product);
-                }*/
+                   
+                    for (int i = 0; i < ticket.Quantity; i++)
+                    {
+                        attachments.Add(_ticketService.CreatePdfTicket(ticket, i));
+                    }
+                    
+                }
 
                 loggedInUser.ShoppingCart.Tickets.Clear();
-                _userRepository.Update(loggedInUser);
-                //this._emailService.SendEmailAsync(message);
+                 _userRepository.Update(loggedInUser);
+
+                 await _unitOfWork.SaveChangesAsync();
+                await _emailService.SendEmailAsync(message, attachments);
 
                 return true;
-            }
-            return false;
+        }
+        return false;
     }
 }

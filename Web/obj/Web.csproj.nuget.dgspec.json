@@ -192,6 +192,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "GemBox.Document": {
+              "target": "Package",
+              "version": "[35.0.1869, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.7.1.1, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -199,6 +207,10 @@
             "Stripe.net": {
               "target": "Package",
               "version": "[45.10.0, )"
+            },
+            "Xceed.Words.NET": {
+              "target": "Package",
+              "version": "[3.0.24152.1219, )"
             }
           },
           "imports": [

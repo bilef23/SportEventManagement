@@ -9,4 +9,5 @@ public interface ITicketService
     public Task<Ticket> CreateNewTicket(Ticket ticket);
     public Task<Ticket> UpdateTicket(Ticket ticket);
     public Task<Ticket> DeleteTicket(Guid id);
+    MemoryStream CreatePdfTicket(Ticket ticket, int ticketNumber);
 }

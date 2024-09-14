@@ -24,7 +24,8 @@ public class UserRepository : IUserRepository
         return _entities
             .Include(z=>z.Orders)
             .Include("Orders.TicketsInOrder")
-            .Include("Orders.TicketsInOrder.Event")
+            .Include("Orders.TicketsInOrder.Ticket")
+            .Include("Orders.TicketsInOrder.Ticket.Event")
             .Include(z => z.ShoppingCart)
             .Include("ShoppingCart.Tickets")
             .Include("ShoppingCart.Tickets.Event")

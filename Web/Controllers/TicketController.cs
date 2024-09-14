@@ -32,11 +32,11 @@ public class TicketController : Controller
         var allTicketsDto = allTickets.Select(ticket => new TicketDTO
         {
             Quantity = ticket.Quantity,
-            PurchaseDate = ticket.PurchaseDate,
-            Username = ticket.User.FirstName+"'s", // Assuming `User` is a property in `Ticket`
-            EventName = ticket.Event.Name,
-            EventDate = ticket.Event.StartDate,
-            Location = ticket.Event.Location// Assuming `Event` is a property in `Ticket`
+            PurchaseDate = ticket.Ticket.PurchaseDate,
+            Username = ticket.Ticket.User.FirstName+"'s", // Assuming `User` is a property in `Ticket`
+            EventName = ticket.Ticket.Event.Name,
+            EventDate = ticket.Ticket.Event.StartDate,
+            Location = ticket.Ticket.Event.Location// Assuming `Event` is a property in `Ticket`
         }).ToList();
         
         return View(allTicketsDto);
@@ -63,11 +63,11 @@ public class TicketController : Controller
             for (int i = 0; i < allTickets.Count; i++)
             {
                 var ticket = allTickets[i];
-                worksheet.Cells[i + 2, 1].Value = ticket.Event.Name; // Event Name
-                worksheet.Cells[i + 2, 2].Value = ticket.Event.StartDate.ToString("yyyy-MM-dd"); // Event Date
-                worksheet.Cells[i + 2, 3].Value = ticket.Event.Location; // Event Location
+                worksheet.Cells[i + 2, 1].Value = ticket.Ticket.Event.Name; // Event Name
+                worksheet.Cells[i + 2, 2].Value = ticket.Ticket.Event.StartDate.ToString("yyyy-MM-dd"); // Event Date
+                worksheet.Cells[i + 2, 3].Value = ticket.Ticket.Event.Location; // Event Location
                 worksheet.Cells[i + 2, 4].Value = ticket.Quantity; // Ticket Quantity
-                worksheet.Cells[i + 2, 5].Value = ticket.PurchaseDate.ToString("yyyy-MM-dd HH:mm:ss"); // Purchase Date
+                worksheet.Cells[i + 2, 5].Value = ticket.Ticket.PurchaseDate.ToString("yyyy-MM-dd HH:mm:ss"); // Purchase Date
             }
 
             // Auto-fit columns for all cells

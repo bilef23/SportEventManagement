@@ -13,5 +13,5 @@ public class Ticket : BaseEntity
     public Guid? OrderId { get; set; }
     public Order? Order { get; set; }
     public Guid? ShoppingCartId { get; set; }
-    public ShoppingCart ShoppingCart { get; set; }
+    public ShoppingCart? ShoppingCart { get; set; }
 }

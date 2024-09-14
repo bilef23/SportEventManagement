@@ -294,10 +294,6 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("OwnerId");
@@ -482,6 +478,30 @@ namespace Repository.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("SportEvents.Domain.TicketInOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketInOrder");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -599,7 +619,7 @@ namespace Repository.Migrations
                         .HasForeignKey("EventId");
 
                     b.HasOne("SportEvents.Domain.Order", "Order")
-                        .WithMany("TicketsInOrder")
+                        .WithMany()
                         .HasForeignKey("OrderId");
 
                     b.HasOne("SportEvents.Domain.ShoppingCart", "ShoppingCart")
@@ -617,6 +637,25 @@ namespace Repository.Migrations
                     b.Navigation("ShoppingCart");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SportEvents.Domain.TicketInOrder", b =>
+                {
+                    b.HasOne("SportEvents.Domain.Order", "Order")
+                        .WithMany("TicketsInOrder")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SportEvents.Domain.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>

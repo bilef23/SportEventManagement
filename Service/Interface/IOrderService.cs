@@ -4,5 +4,5 @@ namespace Service.Interface;
 
 public interface IOrderService
 {
-    List<Ticket> GetAllTicketsFromOrders(string userId);
+    List<TicketInOrder> GetAllTicketsFromOrders(string userId);
 }

@@ -15,7 +15,7 @@ public class OrderService : IOrderService
         _userRepository = userRepository;
     }
 
-    public List<Ticket> GetAllTicketsFromOrders(string userId)
+    public List<TicketInOrder> GetAllTicketsFromOrders(string userId)
     {
         var user = _userRepository.Get(userId);
         var allOrders= user.Orders.SelectMany(o => o.TicketsInOrder).ToList();

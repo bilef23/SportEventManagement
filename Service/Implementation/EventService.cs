@@ -7,10 +7,11 @@ namespace Service.Implementation;
 public class EventService : IEventService
 {
     private readonly IRepository<Event> _eventRepository;
-
-    public EventService(IRepository<Event> eventRepository)
+    private readonly IUnitOfWork _unitOfWork;
+    public EventService(IRepository<Event> eventRepository, IUnitOfWork unitOfWork)
     {
         _eventRepository = eventRepository;
+        _unitOfWork = unitOfWork;
     }
 
 
@@ -33,38 +34,43 @@ public class EventService : IEventService
     public async Task<Event> CreateNewEvent(Event @event)
     {
         ConvertToUTC(@event);
-        var result = await _eventRepository.Insert(@event);
-        if (result is null)
+        await _eventRepository.Insert(@event);
+        int result = await _unitOfWork.SaveChangesAsync();
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return @event;
     }
 
     public async Task<Event> UpdateEvent(Event @event)
     {
         ConvertToUTC(@event);
-        var result = await _eventRepository.Update(@event);
-        if (result is null)
+        await _eventRepository.Update(@event);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return @event;
     }
 
     public async Task<Event> DeleteEvent(Guid? id)
     {
         var @event =await  GetEventById(id);
         
-        var result = await _eventRepository.Delete(@event);
-        if (result is null)
+        await _eventRepository.Delete(@event);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
         {
             throw new OperationCanceledException("Action can not be executed");
         }
 
-        return result;
+        return @event;
     }
     
     private void ConvertToUTC(Event @event)
