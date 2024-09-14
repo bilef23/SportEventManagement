@@ -7,13 +7,26 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="GemBox.Document" Version="35.0.1869" />
+      <PackageReference Include="MailKit" Version="4.7.1.1" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
       <PackageReference Include="Stripe.net" Version="45.10.0" />
+      <PackageReference Include="Xceed.Words.NET" Version="3.0.24152.1219" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Repository\Repository.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Tickets\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.AspNetCore.Mvc.Core">
+        <HintPath>..\..\..\..\..\usr\local\share\dotnet\shared\Microsoft.AspNetCore.App\8.0.4\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

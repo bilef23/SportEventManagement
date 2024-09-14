@@ -47,7 +47,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
             throw new ArgumentNullException(nameof(entity));
         }
         await _entities.AddAsync(entity);
-        await _context.SaveChangesAsync();
         return entity;
     }
 
@@ -58,7 +57,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
             throw new ArgumentNullException(nameof(entity));
         }
         _entities.Update(entity);
-        await _context.SaveChangesAsync();
         return entity;
     }
 
@@ -69,7 +67,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
             throw new ArgumentNullException(nameof(entity));
         }
         _entities.Remove(entity);
-        await _context.SaveChangesAsync();
         return entity;
     }
 
@@ -80,7 +77,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
             throw new ArgumentNullException(nameof(entities));
         }
         entities.AddRange(entities);
-        await _context.SaveChangesAsync();
         return entities;
     }
 

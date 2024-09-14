@@ -8,5 +8,6 @@ public static class ConfigureOptions
     {
         services.Configure<ConnectionStrings>(configuration.GetSection(ConnectionStrings.Key));
         services.Configure<StripeSettings>(configuration.GetSection(StripeSettings.Key));
+        services.Configure<MailSettings>(configuration.GetSection(MailSettings.Key));
     }
 }

@@ -5,7 +5,7 @@ namespace SportEvents.Domain;
 
 public class Order : BaseEntity
 {
-    public string UserId { get; set; }
+    public string OwnerId { get; set; }
     public SportEventsAppUser Owner { get; set; }
-    public ICollection<Ticket> TicketsInOrder { get; set; }
+    public ICollection<TicketInOrder> TicketsInOrder { get; set; }
 }
