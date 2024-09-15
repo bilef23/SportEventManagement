@@ -14,16 +14,15 @@ namespace Web.Controllers
 {
     public class RegistrationController : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IParticipantService _participantService;
         private readonly IRegistrationService _registrationService;
         private readonly IEventService _eventService;
 
-        public RegistrationController(ApplicationDbContext context, IParticipantService participantService, IRegistrationService registrationService)
+        public RegistrationController( IParticipantService participantService, IRegistrationService registrationService, IEventService eventService)
         {
-            _context = context;
             _participantService = participantService;
             _registrationService = registrationService;
+            _eventService = eventService;
         }
 
         // GET: Registration
@@ -45,10 +44,7 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var registration = await _context.Registrations
-                .Include(r => r.Event)
-                .Include(r => r.Participant)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var registration = await _registrationService.GetRegistrationById(id);
             if (registration == null)
             {
                 return NotFound();
@@ -58,9 +54,10 @@ namespace Web.Controllers
         }
 
         // GET: Registration/Create
-        public IActionResult Create(Guid eventId)
+        public async Task<IActionResult> Create(Guid eventId)
         {
-            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description",eventId);
+            var events = await _eventService.GetEvents();
+            ViewData["EventId"] = new SelectList(events, "Id", "Description",eventId);
             ParticipantRegistrationViewModel model = new ParticipantRegistrationViewModel();
             model.EventId = eventId;
             ViewBag.GenderList = new SelectList(Enum.GetValues(typeof(Gender)));
@@ -119,20 +116,23 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var registration = await _context.Registrations.FindAsync(id);
+            var registration = await _registrationService.GetRegistrationById(id);
             if (registration == null)
             {
                 return NotFound();
             }
-            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description", registration.EventId);
-            ViewData["ParticipantId"] = new SelectList(_context.Participants, "Id", "Email", registration.ParticipantId);
+
+            var events = await  _eventService.GetEvents();
+            var participants = await _participantService.GetParticipants();
+            ViewData["EventId"] = new SelectList(events, "Id", "Description", registration.EventId);
+            ViewData["ParticipantId"] = new SelectList(participants, "Id", "Email", registration.ParticipantId);
             return View(registration);
         }
 
         // POST: Registration/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("RegistrationDate,Status,EventId,ParticipantId,Id")] Registration registration)
         {
@@ -145,8 +145,7 @@ namespace Web.Controllers
             {
                 try
                 {
-                    _context.Update(registration);
-                    await _context.SaveChangesAsync();
+                    _registrationService.UpdateRegistration(registration);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -161,10 +160,12 @@ namespace Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Description", registration.EventId);
-            ViewData["ParticipantId"] = new SelectList(_context.Participants, "Id", "Email", registration.ParticipantId);
+            var events = await  _eventService.GetEvents();
+            var participants = await _participantService.GetParticipants();
+            ViewData["EventId"] = new SelectList(events, "Id", "Description", registration.EventId);
+            ViewData["ParticipantId"] = new SelectList(participants, "Id", "Email", registration.ParticipantId);
             return View(registration);
-        }
+        }*/
 
         // GET: Registration/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
@@ -174,10 +175,7 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var registration = await _context.Registrations
-                .Include(r => r.Event)
-                .Include(r => r.Participant)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var registration =await  _registrationService.GetRegistrationById(id);
             if (registration == null)
             {
                 return NotFound();
@@ -191,19 +189,17 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var registration = await _context.Registrations.FindAsync(id);
-            if (registration != null)
+            if (id != null)
             {
-                _context.Registrations.Remove(registration);
+                await _registrationService.DeleteRegistration(id);
             }
-
-            await _context.SaveChangesAsync();
+            
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RegistrationExists(Guid id)
+        /*private bool RegistrationExists(Guid id)
         {
             return _context.Registrations.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

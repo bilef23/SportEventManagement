@@ -13,7 +13,6 @@ public static class AddServices
         services.AddScoped<IOrganizerService, OrganizerService>();
         services.AddScoped<IParticipantService, ParticipantService>();
         services.AddScoped<IRegistrationService, RegistrationService>();
-        services.AddScoped<ITeamService, TeamService>();
         services.AddScoped<ITicketService, TicketService>();
         services.AddScoped<IShoppingCartService, ShoppingCartService>();
         services.AddScoped<IOrderService, OrderService>();

@@ -14,11 +14,11 @@ public class Event : BaseEntity
     public Organizer? Organizer { get; set; }
     public string ImageUrl { get; set; }
     public double EventPrice { get; set; }
-    
-    public ICollection<Ticket>? Tickets { get; set; }
+
+    public ICollection<Ticket>? Tickets { get; set; } = new List<Ticket>();
     public int MaximumCapacityEvent { get; set; }
     public int MaximumRegistrations { get; set; }
     public bool OpenForRegistrations { get; set; }
-    
-    public ICollection<Registration>? Registrations { get; set; }
+
+    public ICollection<Registration>? Registrations { get; set; } = new List<Registration>();
 }

@@ -70,9 +70,9 @@
                 {
                 <span class="text-muted">Closed for Registrations</span>
                 }
-                @if (@item.MaximumCapacityEvent +1 > item.MaximumCapacityEvent)
+                @if (@item.Tickets.Count +1 > item.MaximumCapacityEvent)
                 {
-                    <span class="text-muted">Closed for Registrations</span>
+                    <span class="text-muted">Sold out</span>
 
                 }
                 else

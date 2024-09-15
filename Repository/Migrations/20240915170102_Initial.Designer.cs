@@ -12,8 +12,8 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240912143438_AddEntityOrder")]
-    partial class AddEntityOrder
+    [Migration("20240915170102_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,79 @@ namespace Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -74,79 +147,6 @@ namespace Repository.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("character varying(21)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator().HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -247,8 +247,8 @@ namespace Repository.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal?>("EventPrice")
-                        .HasColumnType("numeric");
+                    b.Property<double>("EventPrice")
+                        .HasColumnType("double precision");
 
                     b.Property<int>("EventType")
                         .HasColumnType("integer");
@@ -274,7 +274,7 @@ namespace Repository.Migrations
                     b.Property<bool>("OpenForRegistrations")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid>("OrganizerId")
+                    b.Property<Guid?>("OrganizerId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("StartDate")
@@ -297,15 +297,11 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("userId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Organizer", b =>
@@ -363,12 +359,7 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TeamId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
 
                     b.ToTable("Participants");
                 });
@@ -382,7 +373,7 @@ namespace Repository.Migrations
                     b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ParticipantId")
+                    b.Property<Guid?>("ParticipantId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -391,44 +382,36 @@ namespace Repository.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
 
                     b.HasIndex("ParticipantId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Registrations");
                 });
 
-            modelBuilder.Entity("SportEvents.Domain.Team", b =>
+            modelBuilder.Entity("SportEvents.Domain.ShoppingCart", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("CoachName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ContactEmail")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ContactPhone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("OwnerId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams");
+                    b.HasIndex("OwnerId")
+                        .IsUnique();
+
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Ticket", b =>
@@ -446,18 +429,14 @@ namespace Repository.Migrations
                     b.Property<DateTime>("PurchaseDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("SeatNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid?>("ShoppingCartId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("text");
-
-                    b.Property<int>("numberOfPeople")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -465,25 +444,35 @@ namespace Repository.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("ShoppingCartId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>
+            modelBuilder.Entity("SportEvents.Domain.TicketInOrder", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("text");
+                    b.Property<Guid>("TicketId")
+                        .HasColumnType("uuid");
 
-                    b.HasDiscriminator().HasValue("SportEventsAppUser");
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketInOrders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -497,7 +486,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Identity.SportEventsAppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -506,7 +495,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Identity.SportEventsAppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -521,7 +510,7 @@ namespace Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Identity.SportEventsAppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -530,7 +519,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Identity.SportEventsAppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -541,9 +530,7 @@ namespace Repository.Migrations
                 {
                     b.HasOne("SportEvents.Domain.Organizer", "Organizer")
                         .WithMany("Events")
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrganizerId");
 
                     b.Navigation("Organizer");
                 });
@@ -551,21 +538,12 @@ namespace Repository.Migrations
             modelBuilder.Entity("SportEvents.Domain.Order", b =>
                 {
                     b.HasOne("Domain.Identity.SportEventsAppUser", "Owner")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("SportEvents.Domain.Participant", b =>
-                {
-                    b.HasOne("SportEvents.Domain.Team", "Team")
-                        .WithMany("Participants")
-                        .HasForeignKey("TeamId");
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Registration", b =>
@@ -578,13 +556,28 @@ namespace Repository.Migrations
 
                     b.HasOne("SportEvents.Domain.Participant", "Participant")
                         .WithMany("Registrations")
-                        .HasForeignKey("ParticipantId")
+                        .HasForeignKey("ParticipantId");
+
+                    b.HasOne("Domain.Identity.SportEventsAppUser", "User")
+                        .WithMany("Registrations")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Event");
 
                     b.Navigation("Participant");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SportEvents.Domain.ShoppingCart", b =>
+                {
+                    b.HasOne("Domain.Identity.SportEventsAppUser", "Owner")
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("SportEvents.Domain.ShoppingCart", "OwnerId");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Ticket", b =>
@@ -594,18 +587,52 @@ namespace Repository.Migrations
                         .HasForeignKey("EventId");
 
                     b.HasOne("SportEvents.Domain.Order", "Order")
-                        .WithMany("TicketsInOrder")
+                        .WithMany()
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("Domain.Identity.SportEventsAppUser", "User")
+                    b.HasOne("SportEvents.Domain.ShoppingCart", "ShoppingCart")
                         .WithMany("Tickets")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("ShoppingCartId");
+
+                    b.HasOne("Domain.Identity.SportEventsAppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Event");
 
                     b.Navigation("Order");
 
+                    b.Navigation("ShoppingCart");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SportEvents.Domain.TicketInOrder", b =>
+                {
+                    b.HasOne("SportEvents.Domain.Order", "Order")
+                        .WithMany("TicketsInOrder")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SportEvents.Domain.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Ticket");
+                });
+
+            modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>
+                {
+                    b.Navigation("Orders");
+
+                    b.Navigation("Registrations");
+
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Event", b =>
@@ -630,12 +657,7 @@ namespace Repository.Migrations
                     b.Navigation("Registrations");
                 });
 
-            modelBuilder.Entity("SportEvents.Domain.Team", b =>
-                {
-                    b.Navigation("Participants");
-                });
-
-            modelBuilder.Entity("Domain.Identity.SportEventsAppUser", b =>
+            modelBuilder.Entity("SportEvents.Domain.ShoppingCart", b =>
                 {
                     b.Navigation("Tickets");
                 });
