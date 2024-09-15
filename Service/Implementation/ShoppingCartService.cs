@@ -42,7 +42,7 @@ public class ShoppingCartService : IShoppingCartService
         return userShoppingCart;
     }
     
-    public ShoppingCartDTO getShoppingCartInfo(string userId)
+    public ShoppingCartDTO GetShoppingCartInfo(string userId)
     {
         var loggedInUser = _userRepository.Get(userId);
 
@@ -66,6 +66,7 @@ public class ShoppingCartService : IShoppingCartService
                 var loggedInUser = _userRepository.Get(userId);
 
                 var userShoppingCart = loggedInUser.ShoppingCart;
+            
                 EmailMessage message = new EmailMessage();
                 message.Subject = "Sport event Tickets";
                 message.MailTo = loggedInUser.Email;
@@ -114,5 +115,26 @@ public class ShoppingCartService : IShoppingCartService
                 return true;
         }
         return false;
+    }
+
+    public async Task<ShoppingCart> GetShoppingCartByOwnerId(string? userId)
+    {
+        var shoppingCarts = await _shoppingCartRepository.GetAll(e=>e.Tickets);
+        var result = shoppingCarts.Find(sc => sc.OwnerId.Equals(userId));
+
+        return result;
+    }
+
+    public async Task<ShoppingCart> UpdateShoppingCart(ShoppingCart shoppingCart)
+    {
+        await _shoppingCartRepository.Update(shoppingCart);
+        var result = await _unitOfWork.SaveChangesAsync();
+        
+        if (result <= 0)
+        {
+            throw new OperationCanceledException("Action can not be executed");
+        }
+
+        return shoppingCart;
     }
 }

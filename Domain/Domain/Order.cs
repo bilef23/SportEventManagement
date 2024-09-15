@@ -7,5 +7,5 @@ public class Order : BaseEntity
 {
     public string OwnerId { get; set; }
     public SportEventsAppUser Owner { get; set; }
-    public ICollection<TicketInOrder> TicketsInOrder { get; set; }
+    public ICollection<TicketInOrder> TicketsInOrder { get; set; } = new List<TicketInOrder>();
 }

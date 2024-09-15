@@ -271,7 +271,7 @@ namespace Repository.Migrations
                     b.Property<bool>("OpenForRegistrations")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid>("OrganizerId")
+                    b.Property<Guid?>("OrganizerId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("StartDate")
@@ -298,7 +298,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Organizer", b =>
@@ -356,12 +356,7 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TeamId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
 
                     b.ToTable("Participants");
                 });
@@ -375,7 +370,7 @@ namespace Repository.Migrations
                     b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ParticipantId")
+                    b.Property<Guid?>("ParticipantId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -413,38 +408,7 @@ namespace Repository.Migrations
                     b.HasIndex("OwnerId")
                         .IsUnique();
 
-                    b.ToTable("ShoppingCart");
-                });
-
-            modelBuilder.Entity("SportEvents.Domain.Team", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("CoachName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ContactEmail")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ContactPhone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teams");
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("SportEvents.Domain.Ticket", b =>
@@ -505,7 +469,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("TicketId");
 
-                    b.ToTable("TicketInOrder");
+                    b.ToTable("TicketInOrders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -563,9 +527,7 @@ namespace Repository.Migrations
                 {
                     b.HasOne("SportEvents.Domain.Organizer", "Organizer")
                         .WithMany("Events")
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrganizerId");
 
                     b.Navigation("Organizer");
                 });
@@ -581,15 +543,6 @@ namespace Repository.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("SportEvents.Domain.Participant", b =>
-                {
-                    b.HasOne("SportEvents.Domain.Team", "Team")
-                        .WithMany("Participants")
-                        .HasForeignKey("TeamId");
-
-                    b.Navigation("Team");
-                });
-
             modelBuilder.Entity("SportEvents.Domain.Registration", b =>
                 {
                     b.HasOne("SportEvents.Domain.Event", "Event")
@@ -600,9 +553,7 @@ namespace Repository.Migrations
 
                     b.HasOne("SportEvents.Domain.Participant", "Participant")
                         .WithMany("Registrations")
-                        .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParticipantId");
 
                     b.HasOne("Domain.Identity.SportEventsAppUser", "User")
                         .WithMany("Registrations")
@@ -706,11 +657,6 @@ namespace Repository.Migrations
             modelBuilder.Entity("SportEvents.Domain.ShoppingCart", b =>
                 {
                     b.Navigation("Tickets");
-                });
-
-            modelBuilder.Entity("SportEvents.Domain.Team", b =>
-                {
-                    b.Navigation("Participants");
                 });
 #pragma warning restore 612, 618
         }

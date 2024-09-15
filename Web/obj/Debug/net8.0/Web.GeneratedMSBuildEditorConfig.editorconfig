@@ -58,26 +58,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Participant/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Participant/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Participant/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Participant/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Participant/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

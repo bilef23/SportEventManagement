@@ -12,6 +12,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.4"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -69,6 +70,11 @@
       <_ContentIncludedByDefault Remove="Views\Ticket\Details.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Ticket\Edit.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Ticket\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Participant\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Participant\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Participant\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Participant\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Participant\Index.cshtml" />
     </ItemGroup>
 
 </Project>

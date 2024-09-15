@@ -16,10 +16,9 @@ public class DbSeeder : IDbSeeder
     {
         await SeedOrganizerData();
         await SeedEventData();
-        await SeedTeamData();
         //await SeedParticipantData();
         //await SeedRegistrationData();
-        await SeedTicketData();
+        //await SeedTicketData();
        
     }
 
@@ -104,7 +103,6 @@ public class DbSeeder : IDbSeeder
                 DateOfBirth = new DateTime(1990, 5, 21).ToUniversalTime(),
                 Email = "alice@example.com",
                 PhoneNumber = "111-222-3333",
-                TeamId = _dbContext.Teams.FirstOrDefault().Id
             };
 
             var participant2 = new Participant
@@ -116,7 +114,6 @@ public class DbSeeder : IDbSeeder
                 DateOfBirth = new DateTime(1988, 10, 12).ToUniversalTime(),
                 Email = "bob@example.com",
                 PhoneNumber = "444-555-6666",
-                TeamId = _dbContext.Teams.FirstOrDefault().Id
             };
             await _dbContext.Participants.AddAsync(participant1);
             await _dbContext.Participants.AddAsync(participant2);
@@ -149,34 +146,6 @@ public class DbSeeder : IDbSeeder
             await _dbContext.SaveChangesAsync();
         }
     }*/
-    private async Task SeedTeamData()
-    {
-        if (!_dbContext.Teams.Any())
-        {
-            var team1 = new Team
-            {
-                Id = Guid.NewGuid(),
-                Name = "City Runners",
-                CoachName = "Coach Carter",
-                ContactEmail = "coach@example.com",
-                ContactPhone = "222-333-4444",
-                City = "New York"
-            };
-
-            var team2 = new Team
-            {
-                Id = Guid.NewGuid(),
-                Name = "Soccer Stars",
-                CoachName = "Coach Smith",
-                ContactEmail = "smith@example.com",
-                ContactPhone = "555-666-7777",
-                City = "Boston"
-            };
-            await _dbContext.Teams.AddAsync(team1);
-            await _dbContext.Teams.AddAsync(team2);
-            await _dbContext.SaveChangesAsync();
-        }
-    }
     private async Task SeedTicketData()
     {
         if (!_dbContext.Tickets.Any())
