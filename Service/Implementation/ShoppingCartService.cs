@@ -66,6 +66,7 @@ public class ShoppingCartService : IShoppingCartService
                 var loggedInUser = _userRepository.Get(userId);
 
                 var userShoppingCart = loggedInUser.ShoppingCart;
+            
                 EmailMessage message = new EmailMessage();
                 message.Subject = "Sport event Tickets";
                 message.MailTo = loggedInUser.Email;

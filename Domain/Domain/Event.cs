@@ -10,12 +10,12 @@ public class Event : BaseEntity
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public EventType EventType { get; set; }
-    public Guid OrganizerId { get; set; }
+    public Guid? OrganizerId { get; set; }
     public Organizer? Organizer { get; set; }
     public string ImageUrl { get; set; }
     public double EventPrice { get; set; }
     
-    public ICollection<Ticket> Tickets { get; set; }
+    public ICollection<Ticket>? Tickets { get; set; }
     public int MaximumCapacityEvent { get; set; }
     public int MaximumRegistrations { get; set; }
     public bool OpenForRegistrations { get; set; }

@@ -17,7 +17,7 @@ public class EventService : IEventService
 
     public Task<List<Event>> GetEvents()
     {
-        return  _eventRepository.GetAll( e=> e.Organizer);
+        return  _eventRepository.GetAll( e=> e.Organizer,e=>e.Registrations);
     }
 
     public async Task<Event> GetEventById(Guid? id)

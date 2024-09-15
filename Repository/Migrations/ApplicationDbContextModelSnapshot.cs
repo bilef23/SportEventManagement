@@ -271,7 +271,7 @@ namespace Repository.Migrations
                     b.Property<bool>("OpenForRegistrations")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid>("OrganizerId")
+                    b.Property<Guid?>("OrganizerId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("StartDate")
@@ -563,9 +563,7 @@ namespace Repository.Migrations
                 {
                     b.HasOne("SportEvents.Domain.Organizer", "Organizer")
                         .WithMany("Events")
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrganizerId");
 
                     b.Navigation("Organizer");
                 });

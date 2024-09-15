@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml.Drawing.Chart.ChartEx;
 using Repository;
 using Service.Interface;
 using SportEvents.Domain;
@@ -16,6 +17,7 @@ namespace Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IParticipantService _participantService;
         private readonly IRegistrationService _registrationService;
+        private readonly IEventService _eventService;
 
         public RegistrationController(ApplicationDbContext context, IParticipantService participantService, IRegistrationService registrationService)
         {
@@ -75,7 +77,12 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                
+                var @event = await _eventService.GetEventById(viewModel.EventId);
+                if (@event.Registrations.Count + 1 > @event.MaximumRegistrations)
+                {
+                    @event.OpenForRegistrations = false;
+                    await _eventService.UpdateEvent(@event);
+                }
                 Participant participant = new Participant()
                 {
                     Id = Guid.NewGuid(),
@@ -95,6 +102,7 @@ namespace Web.Controllers
                     Status = RegistrationStatus.Pending,
                     UserId = userId
                 };
+                
                 await _registrationService.CreateNewRegistration(registration);
                 return RedirectToAction(nameof(Index));
             }

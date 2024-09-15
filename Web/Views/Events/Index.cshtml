@@ -31,9 +31,6 @@
                 @Html.DisplayNameFor(model => model.EventType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Organizer)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.EventPrice)
             </th>
             <th></th>
@@ -61,15 +58,27 @@
                 @Html.DisplayFor(modelItem => item.EventType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Organizer.Name)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.EventPrice)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Create" asp-controller="Registration" asp-route-eventId="@item.Id">Apply</a> |
-                <a asp-action="BuyTicket" asp-controller="Ticket" asp-route-id="@item.Id">Buy a ticket</a>
+                @if (@item.OpenForRegistrations)
+                {
+                    <a asp-action="Create" asp-controller="Registration" asp-route-eventId="@item.Id">Apply</a> 
+                }
+                else
+                {
+                <span class="text-muted">Closed for Registrations</span>
+                }
+                @if (@item.MaximumCapacityEvent +1 > item.MaximumCapacityEvent)
+                {
+                    <span class="text-muted">Closed for Registrations</span>
+
+                }
+                else
+                {
+                    <a asp-action="BuyTicket" asp-controller="Ticket" asp-route-id="@item.Id">Buy a ticket</a>
+                }
             </td>
         </tr>
 }
