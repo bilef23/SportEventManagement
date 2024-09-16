@@ -284,6 +284,39 @@ namespace Repository.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("SportEvents.Domain.GameFromPartnerStore", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Platform")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Version")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GamePartners");
+                });
+
             modelBuilder.Entity("SportEvents.Domain.Order", b =>
                 {
                     b.Property<Guid>("Id")

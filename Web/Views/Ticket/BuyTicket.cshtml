@@ -23,7 +23,7 @@
         <h5><strong>Event:</strong>     @Model.Event.Name</h5>
         <p><strong>Date:</strong>     @Model.Event.StartDate.ToString("MMMM dd, yyyy")</p>
         <p><strong>Location:</strong>     @Model.Event.Location</p>
-        <p id="EventPrice"><strong>Price:</strong>     @Model.Event.EventPrice $</p>
+        <p id="EventPrice"><strong>Price:</strong>     @Model.Event.EventPrice MKD</p>
     </div>
 
     <form asp-action="AddToShoppingCart" asp-controller="Ticket" method="post">

@@ -15,6 +15,7 @@ public class ApplicationDbContext : IdentityDbContext<SportEventsAppUser>
     public DbSet<Order> Orders { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public DbSet<TicketInOrder> TicketInOrders { get; set; }
+    public DbSet<GameFromPartnerStore> GamePartners { get; set; }
     
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
