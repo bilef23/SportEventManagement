@@ -1,0 +1,96 @@
+@model List<SportEvents.Domain.GameFromPartnerStore>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: calc(33.333% - 16px); /* Adjust as necessary for responsive design */
+            background-color: #343a40; /* Dark background for the card */
+            overflow: hidden;
+            color: #fff; /* Light text color for contrast */
+        }
+
+        .card-header {
+            background-color: #495057; /* Darker gray for header */
+            padding: 16px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .card-body {
+            padding: 16px;
+            font-size: 0.9em;
+        }
+
+        .card-footer {
+            background-color: #495057; /* Darker gray for footer */
+            padding: 16px;
+            text-align: right;
+            border-top: 1px solid #444;
+        }
+
+        .card-footer a {
+            margin: 0 4px;
+            text-decoration: none;
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to right, #343a40, #495057);
+        }
+    </style>
+</head>
+
+@{
+ViewData["Title"] = "Games List";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4 text-center">Affordable games under 200 MKD</h1>
+
+<div class="card-container bg-gradient">
+    @if (Model.Any())
+    {
+    @foreach (var game in Model)
+    {
+    <div class="card">
+        <div class="card-header">
+            @game.Name
+        </div>
+        <div class="card-body">
+            <p><strong>Description:</strong> @game.Description</p>
+            <p><strong>Platform:</strong> @game.Platform</p>
+            <p><strong>Genre:</strong> @game.Genre</p>
+            <p><strong>Version:</strong> @game.Version</p>
+            <p><strong>Price:</strong> @game.Price.ToString("C")</p> <!-- Format as currency -->
+        </div>
+        <div class="card-footer">
+            <a href="@Url.Action("Details", new { id = game.Id })">View Details</a>
+        </div>
+    </div>
+    }
+    }
+    else
+    {
+    <h4 class="text-center text-muted">No games available.</h4>
+    }
+</div>
