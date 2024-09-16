@@ -72,7 +72,15 @@ public class EventService : IEventService
 
         return @event;
     }
-    
+
+    public async Task<int> AddEvents(List<Event> events)
+    {
+        await _eventRepository.InsertMany(events);
+        var result = await _unitOfWork.SaveChangesAsync();
+
+        return result;
+    }
+
     private void ConvertToUTC(Event @event)
     {
         @event.StartDate=@event.StartDate.ToUniversalTime();

@@ -1,57 +1,56 @@
 @model Domain.ViewModels.ParticipantRegistrationViewModel
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ViewData["Title"] = "Create";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container p-4">
+    <h4 class="text-muted text-center">Fill out the participant information below</h4>
+    <hr class="mb-4" />
 
-<h1>Create</h1>
+    <div class="container">
+        <form asp-action="Create" asp-controller="Registration" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Participant.FirstName" class="form-label">First Name</label>
+                <input asp-for="Participant.FirstName" class="form-control" placeholder="Enter first name" />
+                <span asp-validation-for="Participant.FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Participant.LastName" class="form-label">Last Name</label>
+                <input asp-for="Participant.LastName" class="form-control" placeholder="Enter last name" />
+                <span asp-validation-for="Participant.LastName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Participant.Email" class="form-label">Email</label>
+                <input asp-for="Participant.Email" class="form-control" type="email" placeholder="Enter email" />
+                <span asp-validation-for="Participant.Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Participant.PhoneNumber" class="form-label">Phone Number</label>
+                <input asp-for="Participant.PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                <span asp-validation-for="Participant.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Participant.DateOfBirth" class="form-label">Date of Birth</label>
+                <input asp-for="Participant.DateOfBirth" class="form-control" type="date" />
+                <span asp-validation-for="Participant.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Participant.Gender" class="form-label">Gender</label>
+                <select asp-for="Participant.Gender" asp-items="ViewBag.GenderList" class="form-select">
+                    <option value="">Select Gender</option>
+                </select>
+                <span asp-validation-for="Participant.Gender" class="text-danger"></span>
+            </div>
 
-<h4>Registration</h4>
-<hr />
-<form asp-action="Create" asp-controller="Registration" method="post">
-    <div>
-        <label>First Name:</label>
-        <input asp-for="Participant.FirstName" />
+            <input type="hidden" name="EventId" value="@Model.EventId"></input>
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+            </div>
+        </form>
+
     </div>
-    <div>
-        <label>Last Name:</label>
-        <input asp-for="Participant.LastName" />
-    </div>
-    <div>
-        <label>Email:</label>
-        <input asp-for="Participant.Email" />
-    </div>
-    <div>
-        <label>Phone Number:</label>
-        <input asp-for="Participant.PhoneNumber" />
-    </div>
-    <div>
-        <label>Date of Birth:</label>
-        <input asp-for="Participant.DateOfBirth" />
-    </div>
-    <div>
-        <label>Gender</label>
-        <label asp-for="Participant.Gender" class="control-label"></label>
-        <select asp-for="Participant.Gender" asp-items="ViewBag.GenderList" class="form-control"></select>
-    </div>
-    <input type="hidden" name="EventId" value="@Model.EventId"></input>
-    <button type="submit">Submit</button>
-</form>
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-<script>
-    let eventIndex = 1;
-    document.getElementById('add-event').addEventListener('click', function() {
-        let container = document.getElementById('events-container');
-        let newEventField = `<div>
-            <label>Select Event:</label>
-            <select name="Registrations[${eventIndex}].EventId" asp-items="@ViewBag.Events"></select>
-        </div>`;
-        container.insertAdjacentHTML('beforeend', newEventField);
-        eventIndex++;
-    });
-</script>
 
 

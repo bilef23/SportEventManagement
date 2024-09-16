@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Event</h4>
+<div class="container p-4">
+    <h4 style="color: #17a2b8;  ">Event</h4>
     <hr />
-    <dl class="row">
+    <dl class="row text-light">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -54,7 +53,8 @@
             @Html.DisplayFor(model => model.Organizer.Name)
         </dd>
     </dl>
+    <div>
+        <a class="btn btn-outline-light"asp-action="Index">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+

@@ -2,38 +2,93 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<Domain.DTO.TicketDTO>
 
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: calc(33.333% - 16px); /* Adjust as necessary for responsive design */
+            background-color: #343a40; /* Dark background for the card */
+            overflow: hidden;
+            color: #fff; /* Light text color for contrast */
+        }
+
+        .card-header {
+            background-color: #495057; /* Darker gray for header */
+            padding: 16px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .card-body {
+            padding: 16px;
+            font-size: 0.9em;
+        }
+
+        .card-footer {
+            background-color: #495057; /* Darker gray for footer */
+            padding: 16px;
+            text-align: right;
+            border-top: 1px solid #444;
+        }
+
+        .card-footer a {
+            margin: 0 4px;
+            text-decoration: none;
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #17a2b8; /* Bootstrap's primary color */
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to right, #343a40, #495057);
+        }
+    </style>
+</head>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model.Any())
-{
-    <h2>@Model[0].Username ticket list</h2>
-    <a asp-action="ExportTicketsToExcel">Export Tickets</a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Quantity</th>
-            <th>Event Name</th>
-            <th>Event Date</th>
-            <th>Location</th>
-            <th>Purchase Date</th>
-            
-        </tr>
-        </thead>
-        <tbody>
+
+<h1 class="mb-4 text-center">My Ticket List</h1>
+
+<div class="card-container bg-gradient">
+    @if (Model.Any())
+    {
         @foreach (var ticket in Model)
         {
-            <tr>
-                <td>@ticket.Quantity</td>
-                <td>@ticket.EventName</td>
-                <td>@ticket.EventDate</td>
-                <td>@ticket.Location</td>
-                <td>@ticket.PurchaseDate.ToShortDateString()</td>
-                
-            </tr>
+            <div class="card">
+                <div class="card-header">
+                    @ticket.EventName
+                </div>
+                <div class="card-body">
+                    <p><strong>Quantity:</strong> @ticket.Quantity</p>
+                    <p><strong>Event Date:</strong> @ticket.EventDate.ToShortDateString()</p>
+                    <p><strong>Location:</strong> @ticket.Location</p>
+                    <p><strong>Purchase Date:</strong> @ticket.PurchaseDate.ToShortDateString()</p>
+                </div>
+            </div>
         }
-        </tbody>
-    </table>
-
-}
+    }
+    else
+    {
+        <h4 class="text-center text-muted">No tickets available.</h4>
+    }
+</div>

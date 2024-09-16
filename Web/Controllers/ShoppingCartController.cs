@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
 using Stripe;
@@ -15,6 +16,7 @@ public class ShoppingCartController : Controller
     }
 
     // GET
+    [Authorize]
     public IActionResult Index()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -64,6 +66,7 @@ public class ShoppingCartController : Controller
         // Redirect back to the shopping cart view (or another appropriate view)
         return RedirectToAction("Index");
     }
+    
     public IActionResult PayOrder(string stripeEmail, string stripeToken)
     {
         StripeConfiguration.ApiKey = "sk_test_51Pw22BRsDJDll71n2HNfCoeTBkiAG5HQC27XxVkfBdVV4Gp4PkY9dV3LzI37Wk6nncgViytsZxwjglWqqAKNu7vb00CqN6dz3S";
