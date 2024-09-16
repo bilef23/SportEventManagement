@@ -76,7 +76,8 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         {
             throw new ArgumentNullException(nameof(entities));
         }
-        entities.AddRange(entities);
+
+        _entities.AddRange(entities);
         return entities;
     }
 

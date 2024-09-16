@@ -24,6 +24,7 @@ public class TicketController : Controller
     }
 
     // GET
+    [Authorize]
     public IActionResult Index()
     {
         var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);

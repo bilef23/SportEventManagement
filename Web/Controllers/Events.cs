@@ -19,6 +19,7 @@ namespace Web.Controllers
         public async Task<IActionResult> Index()
         {
             var events = await _eventService.GetEvents();
+            events = events.FindAll(l=>l.StartDate > DateTime.Now);
             return View(events);
         }
    

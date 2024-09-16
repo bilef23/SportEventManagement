@@ -54,6 +54,18 @@ namespace Web.Controllers.api;
             return Ok();
         }
 
+        [HttpPost("[action]")]
+        public async Task<IActionResult> ImportEvents(List<Event> events)
+        {
+            var result = await _eventService.AddEvents(events);
+            if (result <= 0)
+            {
+                return StatusCode(500);
+            }
+
+            return Ok();
+        }
+
         [HttpGet("[action]")]
         public async Task<IActionResult> Edit([FromQuery] Guid? id)
         {

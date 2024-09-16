@@ -60,16 +60,7 @@
             height: 200px;
             object-fit: cover;
         }
-
-        .btn-primary {
-            background-color: #007bff; /* Bootstrap's primary color */
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
+        
 
         .bg-gradient {
             background: linear-gradient(to right, #343a40, #495057);
@@ -82,7 +73,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="mb-4 text-center">Events</h1>
+<h1 class="text-center">Events</h1>
 
 <div class="card-container bg-gradient">
     @foreach (var item in Model) {
@@ -100,7 +91,7 @@
             <p><strong>Start Date:</strong> @Html.DisplayFor(modelItem => item.StartDate)</p>
             <p><strong>End Date:</strong> @Html.DisplayFor(modelItem => item.EndDate)</p>
             <p><strong>Event Type:</strong> @Html.DisplayFor(modelItem => item.EventType)</p>
-            <p><strong>Event Price:</strong> @Html.DisplayFor(modelItem => item.EventPrice)</p>
+            <p><strong>Event Price:</strong> @Html.DisplayFor(modelItem => item.EventPrice)$</p>
             <p><strong>Organizer:</strong> @Html.DisplayFor(modelItem => item.Organizer.Name)</p>
         </div>
         <div class="card-footer">

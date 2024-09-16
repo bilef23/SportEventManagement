@@ -8,4 +8,5 @@ public interface IEventService
     public Task<Event> CreateNewEvent(Event Event);
     public Task<Event> UpdateEvent(Event Event);
     public Task<Event> DeleteEvent(Guid? id);
+    public Task<int> AddEvents(List<Event> events);
 }

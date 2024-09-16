@@ -6,26 +6,39 @@
     ViewData["Title"] = "BuyTicket";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Buy Ticket</h1>
-<div class="ticket-details">
-    <h3>@Model.Event.Name</h3>
-    <p><strong>Date:</strong> @Model.Event.StartDate.ToString("MMMM dd, yyyy")</p>
-    <p><strong>Location:</strong> @Model.Event.Location</p>
-    <p id="EventPrice"><strong>Price:</strong> @Model.Event.EventPrice</p>
-</div>
-
-<form asp-action="AddToShoppingCart" asp-controller="Ticket" method="post">
-    <input type="hidden" asp-for="EventId" />
-    <input type="hidden" asp-for="UserId" />
-
-    <div class="form-group">
-        <label asp-for="Quantity" class="control-label">Quantity</label>
-        <input asp-for="Quantity" class="form-control" type="number" min="1" value="1" />
-        <span asp-validation-for="Quantity" class="text-danger"></span>
+<style>
+    strong {
+        color: #17a2b8;
+        padding-right: 3px;
+    }
+    #btn{
+        background:#17a2b8;
+        round-clip: 1px;
+    }
+    
+</style>
+<div class="container py-4">
+    <h2 style="color: #17a2b8;">Ticket for: </h2>
+    <div class="ticket-details py-2">
+        <h5><strong>Event:</strong>     @Model.Event.Name</h5>
+        <p><strong>Date:</strong>     @Model.Event.StartDate.ToString("MMMM dd, yyyy")</p>
+        <p><strong>Location:</strong>     @Model.Event.Location</p>
+        <p id="EventPrice"><strong>Price:</strong>     @Model.Event.EventPrice $</p>
     </div>
 
-    <div>Total price: <strong id=""></strong></div>
+    <form asp-action="AddToShoppingCart" asp-controller="Ticket" method="post">
+        <input type="hidden" asp-for="EventId"/>
+        <input type="hidden" asp-for="UserId"/>
 
-    <button type="submit" class="btn btn-primary">Add to shopping cart</button>
-</form>
+        <div class="form-group ">
+            <label asp-for="Quantity" class="control-label" style="color: #17a2b8;"><strong>Quantity:</strong> </label>
+            <input asp-for="Quantity" class="form-control-sm" type="number" min="1" value="1"/>
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group py-3">
+            <button type="submit" class="btn btn-dark" id="btn">Add to shopping cart</button>
+        </div>
+    </form>
+</div>
+
