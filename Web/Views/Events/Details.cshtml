@@ -5,56 +5,100 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<!-- Include Bootstrap CSS if it's not already included in your project -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<div>
-    <h4>Event</h4>
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .form-container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: auto;
+    }
+    .form-group label {
+        background-color: #e9ecef;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .form-group .form-control-plaintext {
+        background-color: #e9ecef;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: normal;
+    }
+    .btn-back {
+        background-color: #157347;
+        border-color: #20c997;
+        color: #fff;
+        font-weight: bold;
+    }
+    .btn-back:hover {
+        background-color: #157347;
+        border-color: #20c997;
+    }
+</style>
+
+<h1 class="text-center mb-4">Details</h1>
+
+<div class="form-container">
+    <h4>Event Details</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Location)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.Location)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.StartDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.EndDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.EventType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.EventType)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Organizer)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9 form-control-plaintext">
             @Html.DisplayFor(model => model.Organizer.Name)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<div class="container mt-3 text-center">
+    <a asp-action="Index" class="btn btn-back">Back to List</a>
 </div>
+
+<!-- Include Bootstrap JS if it's not already included in your project -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

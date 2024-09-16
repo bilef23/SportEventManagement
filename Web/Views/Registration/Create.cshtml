@@ -9,38 +9,97 @@
 
 <h4>Registration</h4>
 <hr />
-<form asp-action="Create" asp-controller="Registration" method="post">
-    <div>
-        <label>First Name:</label>
-        <input asp-for="Participant.FirstName" />
+<!-- Include Bootstrap CSS if it's not already included in your project -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .form-container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+    }
+    .form-group label {
+        background-color: #e9ecef;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .form-group input,
+    .form-group select {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
+    .btn-submit {
+        background-color: #28a745; /* Stylish green */
+        border-color: #218838; /* Slightly darker green for border */
+        color: #fff; /* White text for contrast */
+        font-weight: bold; /* Bold text for emphasis */
+    }
+    .btn-submit:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34; /* Even darker green for border on hover */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle shadow for better focus */
+    }
+    .btn-back {
+        background-color: #157347;
+        border-color: #20c997;
+    }
+    .btn-back:hover {
+        background-color: #157347;
+        border-color: #20c997;
+    }
+</style>
+
+<form asp-action="Create" asp-controller="Registration" method="post" class="form-container mt-5">
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input asp-for="Participant.FirstName" class="form-control" id="FirstName" />
     </div>
-    <div>
-        <label>Last Name:</label>
-        <input asp-for="Participant.LastName" />
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input asp-for="Participant.LastName" class="form-control" id="LastName" />
     </div>
-    <div>
-        <label>Email:</label>
-        <input asp-for="Participant.Email" />
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input asp-for="Participant.Email" type="email" class="form-control" id="Email" />
     </div>
-    <div>
-        <label>Phone Number:</label>
-        <input asp-for="Participant.PhoneNumber" />
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number:</label>
+        <input asp-for="Participant.PhoneNumber" type="tel" class="form-control" id="PhoneNumber" />
     </div>
-    <div>
-        <label>Date of Birth:</label>
-        <input asp-for="Participant.DateOfBirth" />
+    <div class="form-group">
+        <label for="DateOfBirth">Date of Birth:</label>
+        <input asp-for="Participant.DateOfBirth" type="date" class="form-control" id="DateOfBirth" />
     </div>
-    <div>
-        <label>Gender</label>
-        <label asp-for="Participant.Gender" class="control-label"></label>
-        <select asp-for="Participant.Gender" asp-items="ViewBag.GenderList" class="form-control"></select>
+    <div class="form-group">
+        <label for="Gender">Gender</label>
+        <select asp-for="Participant.Gender" asp-items="ViewBag.GenderList" class="form-control" id="Gender"></select>
     </div>
-    <input type="hidden" name="EventId" value="@Model.EventId"></input>
-    <button type="submit">Submit</button>
+    <input type="hidden" name="EventId" value="@Model.EventId" />
+    <button type="submit" class="btn btn-submit btn-block">Submit</button>
 </form>
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<div class="container mt-3 text-center">
+    <a asp-action="Index" class="btn btn-back">Back to List</a>
 </div>
+
+
+<!-- Include Bootstrap JS if it's not already included in your project -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
     let eventIndex = 1;
     document.getElementById('add-event').addEventListener('click', function() {

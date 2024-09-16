@@ -6,11 +6,58 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Model.Any())
-{
-    <h2>@Model[0].Username ticket list</h2>
-    <a asp-action="ExportTicketsToExcel">Export Tickets</a>
-    <table class="table">
+        <!-- Include Bootstrap CSS if it's not already included in your project -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .form-container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: auto;
+    }
+    .btn-custom {
+        background-color: #28a745; /* Stylish green */
+        border-color: #218838; /* Slightly darker green for border */
+        color: #fff; /* White text for contrast */
+        font-weight: bold; /* Bold text for emphasis */
+    }
+    .btn-custom:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34; /* Even darker green for border on hover */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    th {
+        background-color: #e9ecef;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="form-container mt-5">
+    @if (Model.Any())
+    {
+    <h2 class="text-center mb-4">@Model[0].Username's Ticket List</h2>
+
+    <div class="text-right mb-3">
+        <a asp-action="ExportTicketsToExcel" class="btn btn-custom">Export Tickets</a>
+    </div>
+
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>Quantity</th>
@@ -18,22 +65,25 @@
             <th>Event Date</th>
             <th>Location</th>
             <th>Purchase Date</th>
-            
         </tr>
         </thead>
         <tbody>
         @foreach (var ticket in Model)
         {
-            <tr>
-                <td>@ticket.Quantity</td>
-                <td>@ticket.EventName</td>
-                <td>@ticket.EventDate</td>
-                <td>@ticket.Location</td>
-                <td>@ticket.PurchaseDate.ToShortDateString()</td>
-                
-            </tr>
+        <tr>
+            <td>@ticket.Quantity</td>
+            <td>@ticket.EventName</td>
+            <td>@ticket.EventDate.ToString("MMMM dd, yyyy")</td>
+            <td>@ticket.Location</td>
+            <td>@ticket.PurchaseDate.ToShortDateString()</td>
+        </tr>
         }
         </tbody>
     </table>
+    }
+</div>
 
-}
+<!-- Include Bootstrap JS if it's not already included in your project -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+

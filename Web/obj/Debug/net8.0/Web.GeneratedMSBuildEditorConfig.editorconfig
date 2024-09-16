@@ -17,111 +17,111 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web
 build_property.RootNamespace = Web
-build_property.ProjectDir = /Users/biledimitrova/RiderProjects/SportEventManagement/Web/
+build_property.ProjectDir = C:\Users\Dell\RiderProjects\SportEventManagement\Web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/biledimitrova/RiderProjects/SportEventManagement/Web
+build_property.MSBuildProjectDirectory = C:\Users\Dell\RiderProjects\SportEventManagement\Web
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0NyZWF0ZS5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Events/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0RlbGV0ZS5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Events/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0RldGFpbHMuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Events/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0VkaXQuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Events/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0luZGV4LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Events/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0NyZWF0ZS5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Registration/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0RlbGV0ZS5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Registration/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0RldGFpbHMuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Registration/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0VkaXQuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Registration/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0luZGV4LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Registration/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcHBpbmdDYXJ0L0luZGV4LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/NotSuccessPayment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcHBpbmdDYXJ0L05vdFN1Y2Nlc3NQYXltZW50LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/NotSuccessPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XE5vdFN1Y2Nlc3NQYXltZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/SuccessPayment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcHBpbmdDYXJ0L1N1Y2Nlc3NQYXltZW50LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/ShoppingCart/SuccessPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XFN1Y2Nlc3NQYXltZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Ticket/BuyTicket.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlja2V0L0J1eVRpY2tldC5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Ticket/BuyTicket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XEJ1eVRpY2tldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Ticket/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlja2V0L0luZGV4LmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Ticket/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Ticket/ShoppingCart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlja2V0L1Nob3BwaW5nQ2FydC5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Ticket/ShoppingCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0XFNob3BwaW5nQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-znl52p88st
+[C:/Users/Dell/RiderProjects/SportEventManagement/Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-lzldzk1rll

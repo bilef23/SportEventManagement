@@ -12,6 +12,17 @@
     a {
         color: #17a2b8;
     }
+    .btn-submit {
+        background-color: #28a745; /* Stylish green */
+        border-color: #218838; /* Slightly darker green for border */
+        color: #fff; /* White text for contrast */
+        font-weight: bold; /* Bold text for emphasis */
+    }
+    .btn-submit:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34; /* Even darker green for border on hover */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle shadow for better focus */
+    }
 </style>
 <h1 class="text-center my-4">My Registration List</h1>
 
@@ -50,7 +61,7 @@
                     @item.Participant.Email
                 </td>
                 <td class="text-center text-light">
-                    <a class="btn btn-outline-light btn-sm" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                    <a class="btn btn-submit" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
                 </td>
             </tr>
         }
