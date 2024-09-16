@@ -1174,3 +1174,4 @@ C:/Users/Dell/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/testhost.e
 /Users/biledimitrova/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
 /Users/biledimitrova/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/biledimitrova/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/Users/biledimitrova/RiderProjects/SportEventManagement/Web/bin/Debug/net8.0/Ticket-Template.docx

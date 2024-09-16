@@ -20,10 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Tickets\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Reference Include="Microsoft.AspNetCore.Mvc.Core">
         <HintPath>..\..\..\..\..\usr\local\share\dotnet\shared\Microsoft.AspNetCore.App\8.0.4\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
       </Reference>

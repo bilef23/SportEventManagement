@@ -11,21 +11,20 @@
         }
 
         .card {
-            border: 1px solid #444;
+            border: 1px solid #5F6F65;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            width: calc(33.333% - 16px); /* Adjust as necessary for responsive design */
-            background-color: #343a40; /* Dark background for the card */
+            box-shadow: 0 2px 4px #9CA986;
+            background-color: #808D7C; /* Dark background for the card */
             overflow: hidden;
             color: #fff; /* Light text color for contrast */
         }
 
         .card-header {
-            background-color: #495057; /* Darker gray for header */
+            background-color: #5F6F65; /* Darker gray for header */
             padding: 16px;
             font-size: 1.2em;
             font-weight: bold;
-            color: #17a2b8;
+            color: #C9DABF;
         }
 
         .card-body {
@@ -34,7 +33,7 @@
         }
 
         .card-footer {
-            background-color: #495057; /* Darker gray for footer */
+            background-color: #5F6F65; /* Darker gray for footer */
             padding: 16px;
             text-align: right;
             border-top: 1px solid #444;
@@ -43,13 +42,12 @@
         .card-footer a {
             margin: 0 4px;
             text-decoration: none;
-            color: #17a2b8; /* Bootstrap's primary color */
+            color: #C9DABF;
         }
-        
-        h1{
-            color: #17a2b8;    
+
+        h2 {
+            color: #5F6F65;
         }
-        
 
         .card-footer a:hover {
             text-decoration: underline;
@@ -60,59 +58,63 @@
             height: 200px;
             object-fit: cover;
         }
-        
 
         .bg-gradient {
-            background: linear-gradient(to right, #343a40, #495057);
+            background: linear-gradient(to right, #808D7C, #9CA986);
         }
     </style>
 </head>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ViewData["Title"] = "Index";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="text-center">Events</h1>
+<h2 class="text-center my-4" >Events</h2>
 
-<div class="card-container bg-gradient">
-    @foreach (var item in Model) {
-    <div class="card">
-        @if (!string.IsNullOrEmpty(item.ImageUrl))
+<div class="container bg-gradient">
+    <div class="row">
+        @foreach (var item in Model)
         {
-            <img src="@item.ImageUrl" class="card-img-top" alt="Event Image">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                <img src="@item.ImageUrl" class="card-img-top img-fluid" alt="Event Image">
+                }
+                <div class="card-header">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Description:</strong> @Html.DisplayFor(modelItem => item.Description)</p>
+                    <p><strong>Location:</strong> @Html.DisplayFor(modelItem => item.Location)</p>
+                    <p><strong>Start Date:</strong> @Html.DisplayFor(modelItem => item.StartDate)</p>
+                    <p><strong>End Date:</strong> @Html.DisplayFor(modelItem => item.EndDate)</p>
+                    <p><strong>Event Type:</strong> @Html.DisplayFor(modelItem => item.EventType)</p>
+                    <p><strong>Event Price:</strong> @Html.DisplayFor(modelItem => item.EventPrice)MKD</p>
+                    <p><strong>Organizer:</strong> @Html.DisplayFor(modelItem => item.Organizer.Name)</p>
+                </div>
+                <div class="card-footer">
+                    @if (item.OpenForRegistrations)
+                    {
+                    <a class="btn btn-outline-light" asp-action="Create" asp-controller="Registration" asp-route-eventId="@item.Id">Apply</a>
+                    }
+                    else
+                    {
+                    <span class="text-muted">Closed for Registrations</span>
+                    }
+                    @if (item.Tickets.Count + 1 > item.MaximumCapacityEvent)
+                    {
+                    <span class="text-muted">Sold out</span>
+                    }
+                    else
+                    {
+                    <a class="btn btn-outline-light" asp-action="BuyTicket" asp-controller="Ticket" asp-route-id="@item.Id">Buy a ticket</a>
+                    }
+                    <a class="btn btn-outline-light" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </div>
+            </div>
+        </div>
         }
-        <div class="card-header">
-            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-        </div>
-        <div class="card-body">
-            <p><strong>Description:</strong> @Html.DisplayFor(modelItem => item.Description)</p>
-            <p><strong>Location:</strong> @Html.DisplayFor(modelItem => item.Location)</p>
-            <p><strong>Start Date:</strong> @Html.DisplayFor(modelItem => item.StartDate)</p>
-            <p><strong>End Date:</strong> @Html.DisplayFor(modelItem => item.EndDate)</p>
-            <p><strong>Event Type:</strong> @Html.DisplayFor(modelItem => item.EventType)</p>
-            <p><strong>Event Price:</strong> @Html.DisplayFor(modelItem => item.EventPrice)MKD</p>
-            <p><strong>Organizer:</strong> @Html.DisplayFor(modelItem => item.Organizer.Name)</p>
-        </div>
-        <div class="card-footer">
-            @if (item.OpenForRegistrations)
-            {
-                <a class="btn btn-outline-dark" asp-action="Create" asp-controller="Registration" asp-route-eventId="@item.Id">Apply</a>
-            }
-            else
-            {
-                <span class="text-muted">Closed for Registrations</span>
-            }
-            @if (item.Tickets.Count + 1 > item.MaximumCapacityEvent)
-            {
-                <span class="text-muted">Sold out</span>
-            }
-            else
-            {
-                <a class="btn btn-outline-dark" asp-action="BuyTicket" asp-controller="Ticket" asp-route-id="@item.Id">Buy a ticket</a>
-            }
-            <a class="btn btn-outline-dark" asp-action="Details" asp-route-id="@item.Id">Details</a>
-        </div>
     </div>
-    }
 </div>
