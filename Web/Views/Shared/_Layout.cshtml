@@ -11,11 +11,13 @@
     <style>
         body {
             /* Background styling */
-            background: linear-gradient(to right, #5f6161, #1a1a1a); /* Dark gradient background */
+            background: linear-gradient(to right, #9CA986, #C9DABF); /* Dark gradient background */
             /* Ensure text color contrasts with background */
+            font-family: 'Roboto', sans-serif;
+           
         }
         nav{
-            background: linear-gradient(to right, #298d9f, #5a5858);
+            background: linear-gradient(#5F6F65,#5F6F65);
         }
     </style>
     @RenderSection("Styles", required: false)
@@ -57,9 +59,14 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-        @RenderBody()
+        <div class="row">
+            <div class="col-lg-12 col-md-10 col-sm-12">
+                @RenderBody()
+            </div>
+        </div>
     </main>
 </div>
+
 
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

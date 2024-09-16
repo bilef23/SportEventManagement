@@ -52,6 +52,9 @@
     <ItemGroup>
       <None Remove="Views\Event_\**" />
       <None Remove="Views\Event\**" />
+      <None Update="Ticket-Template.docx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

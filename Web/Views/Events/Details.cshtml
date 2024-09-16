@@ -5,9 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    dt{
+        color: #5F6F65;
+        font-size: 1.1rem;
+        font-weight: bolder;
+    }
+    dd{
+        font-size: 1rem;
+        font-weight: bold;
+        color: #e1e8d7;
+    }
+    
+    .btn{
+        color: #5F6F65;
+    }
+</style>
 
 <div class="container p-4">
-    <h4 style="color: #17a2b8;  ">Event</h4>
+    <h3 style="color: #5F6F65;">Event</h3>
     <hr />
     <dl class="row text-light">
         <dt class = "col-sm-2">
@@ -46,8 +62,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EventType)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EventPrice)
+        </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventPrice) MKD
+            @Html.DisplayFor(model => model.EventPrice)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Organizer)
