@@ -30,20 +30,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0NyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0RlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0RldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnRzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Events/Index.cshtml]
@@ -64,18 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0NyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0RlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0RldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0cmF0aW9uL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/biledimitrova/RiderProjects/SportEventManagement/Web/Views/Registration/Index.cshtml]

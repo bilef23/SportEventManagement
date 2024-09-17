@@ -72,7 +72,7 @@
         <div class="row">
             @foreach (var game in Model)
             {
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                     <div class="card">
                         <div class="card-header">
                             @game.Name
@@ -82,10 +82,10 @@
                             <p><strong>Platform:</strong> @game.Platform</p>
                             <p><strong>Genre:</strong> @game.Genre</p>
                             <p><strong>Version:</strong> @game.Version</p>
-                            <p><strong>Price:</strong> @game.Price.ToString("C")</p> <!-- Format as currency -->
                         </div>
                         <div class="card-footer">
-                            <a href="@Url.Action("Details", new { id = game.Id })">View Details</a>
+                            <p><strong>Price:</strong> @game.Price.ToString("C") MKD</p> 
+
                         </div>
                     </div>
                 </div>
